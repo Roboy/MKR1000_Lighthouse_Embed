@@ -1,0 +1,35 @@
+----------------------------------------------------------
+Compiling Application using
+BASE PATH = /home/sebtut/mkr1000
+GCC PATH = /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
+----------------------------------------------------------
+Creating ELF binary
+"/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/arm-none-eabi-gcc" "-L/home/sebtut/mkr1000/lib" -Os -Wl,--gc-sections -save-temps "-T/home/sebtut/mkr1000/MKRLib/variants/mkr1000/linker_scripts/gcc/flash_with_bootloader.ld" "-Wl,-Map,/home/sebtut/mkr1000/build/Jiggy.map" --specs=nano.specs --specs=nosys.specs -mcpu=cortex-m0plus -mthumb -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align -o "/home/sebtut/mkr1000/build/Jiggy.elf" /home/sebtut/mkr1000/build/main.o /home/sebtut/mkr1000/build/variant.o -Wl,--start-group -lm "/tmp/arduino_build_174492/core/core.a" -Wl,--end-group
+----------------------------------------------------------
+"/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/arm-none-eabi-nm" "/home/sebtut/mkr1000/build/Jiggy.elf" >"/home/sebtut/mkr1000/build/Jiggy_symbols.txt"
+----------------------------------------------------------
+"/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/arm-none-eabi-size" --format=sysv -t -x /home/sebtut/mkr1000/build/Jiggy.elf
+/home/sebtut/mkr1000/build/Jiggy.elf  :
+section              size         addr
+.text               0xe44       0x2000
+.data                0x18   0x20000000
+.bss                 0x9c   0x20000018
+.ARM.attributes      0x28          0x0
+.comment             0x80          0x0
+.debug_info       0x112d4          0x0
+.debug_abbrev      0x1b0e          0x0
+.debug_loc         0x2569          0x0
+.debug_aranges      0x4e8          0x0
+.debug_ranges       0x700          0x0
+.debug_line        0x29bc          0x0
+.debug_str         0x49a8          0x0
+.debug_frame        0xb94          0x0
+Total             0x1edcb
+
+
+----------------------------------------------------------
+Creating Flash binary
+"/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/arm-none-eabi-objcopy" -O binary /home/sebtut/mkr1000/build/Jiggy.elf /home/sebtut/mkr1000/build/Jiggy.bin
+----------------------------------------------------------
+Creating Flash binary
+"/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/arm-none-eabi-objcopy" -O ihex /home/sebtut/mkr1000/build/Jiggy.elf /home/sebtut/mkr1000/build/Jiggy.hex

@@ -1,0 +1,709 @@
+Archive member included because of file (symbol)
+
+/home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                              (Reset_Handler)
+/home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o) (SysTick_DefaultHandler)
+/home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(delay.c.o) (yield)
+/home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+                              /home/sebtut/mkr1000/build/main.o (SystemInit)
+/home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(startup.c.o) (SystemCoreClock)
+/home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o) (analogReference)
+/home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                              /home/sebtut/mkr1000/build/main.o (pinMode)
+/home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o) (pinPeripheral)
+/home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(delay.c.o) (tickReset)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_thumb1_case_uqi.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o) (__gnu_thumb1_case_uqi)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o) (__aeabi_uidiv)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_dvmd_tls.o)
+                              /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+                              /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (exit)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+                              /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o) (_global_impure_ptr)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+                              /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+                              /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o) (memcpy)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+                              /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
+/home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+                              /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o) (_exit)
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .data          0x0000000000000000        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .text          0x0000000000000000       0x78 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.extab     0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.exidx     0x0000000000000000        0x8 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.attributes
+                0x0000000000000000       0x1b /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/build/main.o
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/build/main.o
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/build/main.o
+ .bss.previousMillis
+                0x0000000000000000        0x4 /home/sebtut/mkr1000/build/main.o
+ .bss.ledState  0x0000000000000000        0x4 /home/sebtut/mkr1000/build/main.o
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/build/variant.o
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/build/variant.o
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/build/variant.o
+ .data.g_apTCInstances
+                0x0000000000000000       0x18 /home/sebtut/mkr1000/build/variant.o
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .text.USB_SetHandler
+                0x0000000000000000        0xc /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .text.millis   0x0000000000000000        0xc /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .text.micros   0x0000000000000000       0x64 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .text.delay    0x0000000000000000       0x20 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .text.__empty  0x0000000000000000        0x2 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .text.__halt   0x0000000000000000        0x2 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .text.init     0x0000000000000000       0xe4 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .text.mapResolution
+                0x0000000000000000       0x12 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .text.analogReadResolution
+                0x0000000000000000       0x4c /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .text.analogWriteResolution
+                0x0000000000000000        0xc /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .text.analogReference
+                0x0000000000000000       0x5c /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .text.analogRead
+                0x0000000000000000       0xd8 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .text.analogWrite
+                0x0000000000000000      0x1f4 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .rodata        0x0000000000000000       0x10 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .data._ADCResolution
+                0x0000000000000000        0x4 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .data._writeResolution
+                0x0000000000000000        0x4 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .bss.tcEnabled.12313
+                0x0000000000000000        0x6 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .data._readResolution
+                0x0000000000000000        0x4 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_info    0x0000000000000000     0x43fe /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_abbrev  0x0000000000000000      0x38f /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_loc     0x0000000000000000      0x635 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_aranges
+                0x0000000000000000       0x48 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_ranges  0x0000000000000000       0x38 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_line    0x0000000000000000      0x4ae /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_str     0x0000000000000000     0x15ca /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .debug_frame   0x0000000000000000       0x90 /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .text.digitalRead
+                0x0000000000000000       0x30 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .text.pinPeripheral
+                0x0000000000000000       0xc4 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_info    0x0000000000000000      0xba7 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_abbrev  0x0000000000000000      0x21b /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_loc     0x0000000000000000      0x123 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_aranges
+                0x0000000000000000       0x20 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_ranges  0x0000000000000000       0x28 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_line    0x0000000000000000      0x310 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_str     0x0000000000000000      0x970 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .ARM.attributes
+                0x0000000000000000       0x32 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .debug_frame   0x0000000000000000       0x30 /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+ .text.initiateReset
+                0x0000000000000000        0xc /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+ .text.cancelReset
+                0x0000000000000000       0x10 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_thumb1_case_uqi.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_thumb1_case_uqi.o)
+ .text          0x0000000000000000       0x9c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000000000000000       0x20 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x0000000000000000       0x1e /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+ .text          0x0000000000000000        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_dvmd_tls.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_dvmd_tls.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x0000000000000000       0x1e /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_dvmd_tls.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .text.exit     0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .debug_frame   0x0000000000000000       0x28 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .data.impure_data
+                0x0000000000000000       0x60 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x0000000000000000        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .rodata.str1.1
+                0x0000000000000000        0x2 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x0000000000000000        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .text.__libc_init_array
+                0x0000000000000000       0x4c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .debug_frame   0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+ .text.memcpy   0x0000000000000000       0x12 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x0000000000000000       0x28 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .text.memset   0x0000000000000000       0x10 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .debug_frame   0x0000000000000000       0x20 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .text._exit    0x0000000000000000        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .ARM.attributes
+                0x0000000000000000       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .debug_frame   0x0000000000000000       0x20 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .text          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .data          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ .bss           0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000000002000 0x000000000003e000 xr
+RAM              0x0000000020000000 0x0000000000008000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+LOAD /home/sebtut/mkr1000/build/main.o
+LOAD /home/sebtut/mkr1000/build/variant.o
+START GROUP
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libm.a
+LOAD /home/sebtut/mkr1000/lib/libcore.a
+END GROUP
+START GROUP
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a
+END GROUP
+START GROUP
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a
+END GROUP
+START GROUP
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a
+END GROUP
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+LOAD /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+
+.text           0x0000000000002000      0x834
+ *(.isr_vector)
+ .isr_vector    0x0000000000002000       0xb0 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                0x0000000000002000                exception_table
+ *(.text*)
+ .text          0x00000000000020b0       0x60 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .text.startup.main
+                0x0000000000002110       0x18 /home/sebtut/mkr1000/build/main.o
+                0x0000000000002110                main
+ .text.Dummy_Handler
+                0x0000000000002128        0x2 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                0x0000000000002128                DMAC_Handler
+                0x0000000000002128                HardFault_Handler
+                0x0000000000002128                AC_Handler
+                0x0000000000002128                PendSV_Handler
+                0x0000000000002128                NMI_Handler
+                0x0000000000002128                TC7_Handler
+                0x0000000000002128                SERCOM1_Handler
+                0x0000000000002128                ADC_Handler
+                0x0000000000002128                TCC1_Handler
+                0x0000000000002128                SERCOM2_Handler
+                0x0000000000002128                TCC0_Handler
+                0x0000000000002128                RTC_Handler
+                0x0000000000002128                EIC_Handler
+                0x0000000000002128                TC6_Handler
+                0x0000000000002128                WDT_Handler
+                0x0000000000002128                TC4_Handler
+                0x0000000000002128                TC3_Handler
+                0x0000000000002128                Dummy_Handler
+                0x0000000000002128                PM_Handler
+                0x0000000000002128                SERCOM5_Handler
+                0x0000000000002128                SVC_Handler
+                0x0000000000002128                TCC2_Handler
+                0x0000000000002128                EVSYS_Handler
+                0x0000000000002128                SERCOM3_Handler
+                0x0000000000002128                SERCOM4_Handler
+                0x0000000000002128                I2S_Handler
+                0x0000000000002128                NVMCTRL_Handler
+                0x0000000000002128                SERCOM0_Handler
+                0x0000000000002128                DAC_Handler
+                0x0000000000002128                PTC_Handler
+                0x0000000000002128                SYSCTRL_Handler
+ *fill*         0x000000000000212a        0x2 
+ .text.USB_Handler
+                0x000000000000212c       0x14 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                0x000000000000212c                USB_Handler
+ .text.Reset_Handler
+                0x0000000000002140       0x54 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                0x0000000000002140                Reset_Handler
+ .text.SysTick_Handler
+                0x0000000000002194       0x10 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                0x0000000000002194                SysTick_Handler
+ .text.SysTick_DefaultHandler
+                0x00000000000021a4       0x14 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+                0x00000000000021a4                SysTick_DefaultHandler
+ .text.__false  0x00000000000021b8        0x4 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+                0x00000000000021b8                sysTickHook
+ .text.SystemInit
+                0x00000000000021bc      0x16c /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+                0x00000000000021bc                SystemInit
+ .text.pinMode  0x0000000000002328       0xc0 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                0x0000000000002328                pinMode
+ .text.digitalWrite
+                0x00000000000023e8       0x60 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                0x00000000000023e8                digitalWrite
+ .text.tickReset
+                0x0000000000002448       0x5c /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+                0x0000000000002448                tickReset
+ .text          0x00000000000024a4       0x14 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_thumb1_case_uqi.o)
+                0x00000000000024a4                __gnu_thumb1_case_uqi
+ *(.init)
+ .init          0x00000000000024b8        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+                0x00000000000024b8                _init
+ .init          0x00000000000024bc        0x8 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ *(.fini)
+ .fini          0x00000000000024c4        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+                0x00000000000024c4                _fini
+ .fini          0x00000000000024c8        0x8 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ *(.rodata*)
+ .rodata.g_APinDescription
+                0x00000000000024d0      0x360 /home/sebtut/mkr1000/build/variant.o
+                0x00000000000024d0                g_APinDescription
+ *(.eh_frame*)
+ .eh_frame      0x0000000000002830        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .eh_frame      0x0000000000002830        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+
+.glue_7         0x0000000000002834        0x0
+ .glue_7        0x0000000000000000        0x0 linker stubs
+
+.glue_7t        0x0000000000002834        0x0
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000002834        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000002834        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x0000000000002834        0x0
+ .iplt          0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.rel.dyn        0x0000000000002834        0x0
+ .rel.iplt      0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x0000000000002834                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000000000002834                __exidx_end = .
+                0x0000000000002834                __etext = .
+
+.data           0x0000000020000000       0x14 load address 0x0000000000002834
+                0x0000000020000000                __data_start__ = .
+ *(vtable)
+ *(.data*)
+ .data.SystemCoreClock
+                0x0000000020000000        0x4 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+                0x0000000020000000                SystemCoreClock
+ .data._ZL5ticks
+                0x0000000020000004        0x4 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+                0x0000000020000008                . = ALIGN (0x4)
+                0x0000000020000008                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x0000000020000008                PROVIDE (__preinit_array_end, .)
+                0x0000000020000008                . = ALIGN (0x4)
+                0x0000000020000008                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x0000000020000008        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+                0x000000002000000c                PROVIDE (__init_array_end, .)
+                0x000000002000000c                . = ALIGN (0x4)
+                0x000000002000000c                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+ .fini_array    0x000000002000000c        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+                0x0000000020000010                PROVIDE (__fini_array_end, .)
+ *(.jcr*)
+ .jcr           0x0000000020000010        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .jcr           0x0000000020000010        0x4 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+                0x0000000020000014                . = ALIGN (0x4)
+                0x0000000020000014                __data_end__ = .
+
+.igot.plt       0x0000000020000014        0x0 load address 0x0000000000002848
+ .igot.plt      0x0000000000000000        0x0 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+
+.bss            0x0000000020000014       0x24 load address 0x0000000000002848
+                0x0000000020000014                . = ALIGN (0x4)
+                0x0000000020000014                __bss_start__ = .
+ *(.bss*)
+ .bss           0x0000000020000014       0x1c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .bss.usb_isr   0x0000000020000030        0x4 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .bss._ulTickCount
+                0x0000000020000034        0x4 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ *(COMMON)
+                0x0000000020000038                . = ALIGN (0x4)
+                0x0000000020000038                __bss_end__ = .
+
+.heap           0x0000000020000038        0x0
+                0x0000000020000038                __end__ = .
+                0x0000000020000038                PROVIDE (end, .)
+ *(.heap*)
+                0x0000000020000038                __HeapLimit = .
+
+.stack_dummy    0x0000000020000038        0x0
+ *(.stack*)
+                0x0000000020008000                __StackTop = (ORIGIN (RAM) + 0x8000)
+                0x0000000020008000                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
+                0x0000000020008000                PROVIDE (__stack, __StackTop)
+                0x0000000020007fff                __ram_end__ = ((ORIGIN (RAM) + 0x8000) - 0x1)
+                0x0000000000000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with stack)
+OUTPUT(/home/sebtut/mkr1000/build/Jiggy.elf elf32-littlearm)
+
+.ARM.attributes
+                0x0000000000000000       0x28
+ .ARM.attributes
+                0x0000000000000000       0x1e /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+ .ARM.attributes
+                0x000000000000001e       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+ .ARM.attributes
+                0x000000000000004a       0x32 /home/sebtut/mkr1000/build/main.o
+ .ARM.attributes
+                0x000000000000007c       0x32 /home/sebtut/mkr1000/build/variant.o
+ .ARM.attributes
+                0x00000000000000ae       0x32 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .ARM.attributes
+                0x00000000000000e0       0x32 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .ARM.attributes
+                0x0000000000000112       0x32 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .ARM.attributes
+                0x0000000000000144       0x32 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .ARM.attributes
+                0x0000000000000176       0x32 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .ARM.attributes
+                0x00000000000001a8       0x32 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .ARM.attributes
+                0x00000000000001da       0x32 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+ .ARM.attributes
+                0x000000000000020c       0x1e /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_thumb1_case_uqi.o)
+ .ARM.attributes
+                0x000000000000022a       0x2c /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtend.o
+ .ARM.attributes
+                0x0000000000000256       0x1e /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtn.o
+
+.comment        0x0000000000000000       0x80
+ .comment       0x0000000000000000       0x80 /home/sebtut/mkr1000/build/main.o
+                                         0x81 (size before relaxing)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/build/variant.o
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .comment       0x0000000000000000       0x81 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+
+.debug_info     0x0000000000000000     0x6479
+ .debug_info    0x0000000000000000      0x4f9 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .debug_info    0x00000000000004f9      0x391 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .debug_info    0x000000000000088a       0x60 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .debug_info    0x00000000000008ea     0x29a1 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .debug_info    0x000000000000328b     0x1dfe /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .debug_info    0x0000000000005089      0xbbe /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .debug_info    0x0000000000005c47      0x832 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+
+.debug_abbrev   0x0000000000000000      0xafc
+ .debug_abbrev  0x0000000000000000      0x159 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .debug_abbrev  0x0000000000000159      0x158 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .debug_abbrev  0x00000000000002b1       0x47 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .debug_abbrev  0x00000000000002f8      0x17a /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .debug_abbrev  0x0000000000000472      0x273 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .debug_abbrev  0x00000000000006e5      0x201 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .debug_abbrev  0x00000000000008e6      0x216 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+
+.debug_loc      0x0000000000000000      0x40d
+ .debug_loc     0x0000000000000000       0x7b /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .debug_loc     0x000000000000007b       0xf4 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .debug_loc     0x000000000000016f       0x58 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .debug_loc     0x00000000000001c7       0xa7 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .debug_loc     0x000000000000026e      0x19f /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+
+.debug_aranges  0x0000000000000000      0x148
+ .debug_aranges
+                0x0000000000000000       0x40 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .debug_aranges
+                0x0000000000000040       0x38 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .debug_aranges
+                0x0000000000000078       0x30 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .debug_aranges
+                0x00000000000000a8       0x20 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .debug_aranges
+                0x00000000000000c8       0x20 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .debug_aranges
+                0x00000000000000e8       0x30 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .debug_aranges
+                0x0000000000000118       0x30 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+
+.debug_ranges   0x0000000000000000       0xf0
+ .debug_ranges  0x0000000000000000       0x30 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .debug_ranges  0x0000000000000030       0x28 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .debug_ranges  0x0000000000000058       0x20 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .debug_ranges  0x0000000000000078       0x10 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .debug_ranges  0x0000000000000088       0x28 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .debug_ranges  0x00000000000000b0       0x20 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .debug_ranges  0x00000000000000d0       0x20 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+
+.debug_line     0x0000000000000000     0x1380
+ .debug_line    0x0000000000000000      0x2c6 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .debug_line    0x00000000000002c6      0x2c9 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .debug_line    0x000000000000058f       0xa2 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .debug_line    0x0000000000000631      0x370 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .debug_line    0x00000000000009a1      0x3a7 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .debug_line    0x0000000000000d48      0x30e /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .debug_line    0x0000000000001056      0x32a /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+
+.debug_str      0x0000000000000000     0x1ec0
+ .debug_str     0x0000000000000000      0x54a /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                                        0x5d4 (size before relaxing)
+ .debug_str     0x000000000000054a       0xf3 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+                                        0x2c8 (size before relaxing)
+ .debug_str     0x000000000000063d       0x6a /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+                                        0x129 (size before relaxing)
+ .debug_str     0x00000000000006a7      0xa99 /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+                                        0xd5a (size before relaxing)
+ .debug_str     0x0000000000001140      0x37c /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+                                        0xbfd (size before relaxing)
+ .debug_str     0x00000000000014bc      0x739 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                                        0x976 (size before relaxing)
+ .debug_str     0x0000000000001bf5      0x2cb /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+                                        0x5a3 (size before relaxing)
+
+.debug_frame    0x0000000000000000      0x220
+ .debug_frame   0x0000000000000000       0x7c /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ .debug_frame   0x000000000000007c       0x78 /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+ .debug_frame   0x00000000000000f4       0x40 /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+ .debug_frame   0x0000000000000134       0x2c /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+ .debug_frame   0x0000000000000160       0x28 /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+ .debug_frame   0x0000000000000188       0x58 /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+ .debug_frame   0x00000000000001e0       0x40 /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+
+Cross Reference Table
+
+Symbol                                            File
+AC_Handler                                        /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+ADC_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+DAC_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+DMAC_Handler                                      /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+Dummy_Handler                                     /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+EIC_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+EVSYS_Handler                                     /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+HardFault_Handler                                 /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+I2S_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+NMI_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+NVMCTRL_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+PM_Handler                                        /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+PTC_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+PendSV_Handler                                    /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+RTC_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+Reset_Handler                                     /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SERCOM0_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SERCOM1_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SERCOM2_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SERCOM3_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SERCOM4_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SERCOM5_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SVC_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SYSCTRL_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SysTick_DefaultHandler                            /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SysTick_Handler                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+SystemCoreClock                                   /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+SystemInit                                        /home/sebtut/mkr1000/lib/libcore.a(startup.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                                                  /home/sebtut/mkr1000/build/main.o
+TC3_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+TC4_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+TC5_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+TC6_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+TC7_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+TCC0_Handler                                      /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+TCC1_Handler                                      /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+TCC2_Handler                                      /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+USB_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+USB_SetHandler                                    /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+WDT_Handler                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+_Jv_RegisterClasses                               /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+__StackTop                                        /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+__aeabi_idiv0                                     /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_dvmd_tls.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+__aeabi_ldiv0                                     /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_dvmd_tls.o)
+__aeabi_uidiv                                     /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+__aeabi_uidivmod                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+__bss_end__                                       /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+__bss_start__                                     /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+__call_exitprocs                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+__data_end__                                      /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+__data_start__                                    /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+__deregister_frame_info                           /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+__dso_handle                                      /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+__etext                                           /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+__gnu_thumb1_case_uqi                             /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_thumb1_case_uqi.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+__init_array_end                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+__init_array_start                                /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+__libc_fini_array                                 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+__libc_init_array                                 /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+__preinit_array_end                               /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+__preinit_array_start                             /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+__register_frame_info                             /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
+__sf_fake_stderr                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+__sf_fake_stdin                                   /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+__sf_fake_stdout                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+__stack                                           /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+__udivsi3                                         /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/libgcc.a(_udivsi3.o)
+_exit                                             /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(_exit.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+_fini                                             /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+_global_impure_ptr                                /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+_impure_ptr                                       /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-impure.o)
+_init                                             /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crti.o
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-init.o)
+_mainCRTStartup                                   /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+_start                                            /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+analogRead                                        /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+analogReadResolution                              /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+analogReference                                   /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+analogWrite                                       /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+analogWriteResolution                             /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+atexit                                            /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+cancelReset                                       /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+delay                                             /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+digitalRead                                       /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+digitalWrite                                      /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+                                                  /home/sebtut/mkr1000/build/main.o
+exception_table                                   /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+exit                                              /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-exit.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+g_APinDescription                                 /home/sebtut/mkr1000/build/variant.o
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+g_apTCInstances                                   /home/sebtut/mkr1000/build/variant.o
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+hardware_init_hook                                /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+init                                              /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+initiateReset                                     /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+ledState                                          /home/sebtut/mkr1000/build/main.o
+main                                              /home/sebtut/mkr1000/build/main.o
+                                                  /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+memcpy                                            /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memcpy-stub.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+memset                                            /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-memset.o)
+                                                  /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+micros                                            /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+millis                                            /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+pendSVHook                                        /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+pinMode                                           /home/sebtut/mkr1000/lib/libcore.a(wiring_digital.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring.c.o)
+                                                  /home/sebtut/mkr1000/build/main.o
+pinPeripheral                                     /home/sebtut/mkr1000/lib/libcore.a(wiring_private.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(wiring_analog.c.o)
+previousMillis                                    /home/sebtut/mkr1000/build/main.o
+software_init_hook                                /home/sebtut/mkr1000/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+svcHook                                           /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+sysTickHook                                       /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(cortex_handlers.c.o)
+tickReset                                         /home/sebtut/mkr1000/lib/libcore.a(Reset.cpp.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
+yield                                             /home/sebtut/mkr1000/lib/libcore.a(hooks.c.o)
+                                                  /home/sebtut/mkr1000/lib/libcore.a(delay.c.o)
