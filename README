@@ -1,2 +1,2 @@
-The code execution on the µC starts upfrom 'src/main.cpp'. Add you source code respectively the main and the Makefile.To Compile and Link the code type 'make'. 
+The code execution on the µC starts off from the 'src/main.cpp' file. In order to compile your code type 'make' in the 'src' directory. Modify the Makefile accoring to your needs. 
 To install the Code on your Arduino MKR1000 connect it via USB, double press the Reset Button and type 'make install'. It should then earse the current flash code and install the binary from the build folder. 

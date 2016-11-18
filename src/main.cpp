@@ -1,47 +1,71 @@
-/*
-  Copyright (c) 2015 Arduino LLC.  All right reserved.
-
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
-
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU Lesser General Public License for more details.
-
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
-
 #define ARDUINO_MAIN
 #include "Arduino.h"
-#include "SPI.h"
+#include "LightHouseTimer.h"
 
-#define INPUT           (0x0) 
-#define OUTPUT          (0x1)
-#define INPUT_PULLUP    (0x2)
-#define INPUT_PULLDOWN  (0x3)
+static volatile uint16_t startMicroseconds;
+static volatile uint16_t stopMicroseconds;
+static volatile uint16_t width[1000]; 
+static volatile uint32_t counter = 0; 
+static volatile bool mavailable = false; 
 
-#define LOW             (0x0)
-#define HIGH            (0x1)
+// Weak empty variant initialization function.
+// May be redefined by variant files.
+void initVariant() __attribute__((weak));
+void initVariant() { }
 
+// Initialize C library
+extern "C" void __libc_init_array(void);
 
-const int               ledPin =  0;               // the number of the LED pin
-int                     ledState = LOW;              // ledState used to set the LED
-unsigned long           previousMillis = 0;         // will store last time LED was updated
-const long              interval = 1000;            // interval at which to blink (milliseconds)
+void test_Print(void){
+    Serial.println("TESTTESTTESTESTTEST"); 
+}
+
+void test_Print_2(void){
+    Serial.println(""); 
+    Serial.println(""); 
+    Serial.println(""); 
+    Serial.println(""); 
+}
+
 
 int main( void )
 {
-    SystemInit(); 
-    pinMode(13, OUTPUT); 
-    digitalWrite(13, HIGH); 
+    init();
+
+    __libc_init_array();
+    initVariant();
+
+    delay(1);
+#if defined(USBCON)
+    USBDevice.init();
+    USBDevice.attach();
+#endif
+
+    /********************* SETUP *******************************/ 
+    initTimer();                                    // the counter value is frequently polled from the Sensors every time an Interrupt on their respective pins occurs, in this function its frequency is initialized 
+    initSensors();                                  // each sensor conntected to the board is initialized here  
+
+    pinMode(8,INPUT); 
+    pinMode(9,INPUT); 
+    pinMode(10,INPUT); 
+    pinMode(11,INPUT); 
+    pinMode(12,INPUT); 
+    pinMode(13,INPUT); 
+
+    attachInterrupt(8, rising_IRQ_S1, RISING); 
+    attachInterrupt(9, rising_IRQ_S2, RISING); 
+    attachInterrupt(5, rising_IRQ_S3, RISING); 
+
+    attachInterrupt(0, falling_IRQ_S1, FALLING); 
+    attachInterrupt(1, falling_IRQ_S2, FALLING); 
+    attachInterrupt(2, falling_IRQ_S3, FALLING); 
+
+    /********************* SETUP *******************************/ 
+
     for (;;)
     {
-        
+       printSensorValues();  
     }
+
     return 0;
 }

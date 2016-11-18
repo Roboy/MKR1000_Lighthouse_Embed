@@ -19,10 +19,10 @@
 # Paths
 # -----------------------------------------------------------------------------
 
-NAME=Jiggy
+NAME=LighthouseLogging
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	MODULE_PATH?=$(HOME)/mkr1000
+	MODULE_PATH?=$(HOME)/WS16_17/Roboy/MKR1000_Lighthouse_Embed
 	RM=rm
 	SEP=/
 	MKDIR= mkdir -p
@@ -73,7 +73,8 @@ ELF=$(NAME).elf
 BIN=$(NAME).bin
 HEX=$(NAME).hex
 
-INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/"
+INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/" -I"$(MODULE_PATH)/WiFi101/src/"
+
 
 # -----------------------------------------------------------------------------
 # Linker options
@@ -87,7 +88,8 @@ LDFLAGS= --specs=nano.specs --specs=nosys.specs -mcpu=cortex-m0plus -mthumb -Wl,
 # Source files and objects
 SOURCES= \
 	main.cpp \
-	variant.cpp
+	variant.cpp \
+	LightHouseTimer.cpp
 
 OBJECTS=$(addprefix $(BUILD_PATH)/, $(SOURCES:.cpp=.o))
 DEPS=$(addprefix $(BUILD_PATH)/, $(SOURCES:.cpp=.o))

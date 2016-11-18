@@ -1,0 +1,8 @@
+----------------------------------------------------------
+Compiling Application using
+BASE PATH = /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed
+GCC PATH = /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
+----------------------------------------------------------
+Compiling main.cpp to /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-g++" -mthumb -mcpu=cortex-m0plus -Wall -Wextra -std=gnu++11 -c -fno-threadsafe-statics -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500  -Os -DDEBUG=0 -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"' -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/CMSIS/Include/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/" main.cpp -o /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
+Makefile:118: recipe for target '/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o' failed

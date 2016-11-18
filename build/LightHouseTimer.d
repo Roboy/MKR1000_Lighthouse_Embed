@@ -1,7 +1,12 @@
-/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/variant.o: \
- variant.cpp \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000/variant.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WVariant.h \
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o: \
+ LightHouseTimer.cpp \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/interrupt.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/io.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/binary.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/itoa.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/sam.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/samd21.h \
@@ -66,13 +71,33 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/instance/usb.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/instance/wdt.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/pio/samd21g18a.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/SERCOM.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Uart.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_constants.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WVariant.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WCharacter.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WString.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Tone.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WMath.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/HardwareSerial.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Print.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WString.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Printable.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/pulse.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/delay.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000/variant.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/SERCOM.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Uart.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/SERCOM.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_digital.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_analog.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_shift.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WInterrupts.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBDesc.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBCore.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBAPI.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USB_host.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h

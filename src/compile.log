@@ -1,0 +1,58 @@
+----------------------------------------------------------
+Compiling Application using
+BASE PATH = /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed
+GCC PATH = /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
+----------------------------------------------------------
+Creating build folder
+mkdir /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build
+----------------------------------------------------------
+Compiling main.cpp to /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-g++" -mthumb -mcpu=cortex-m0plus -Wall -Wextra -std=gnu++11 -c -fno-threadsafe-statics -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500  -Os -DDEBUG=0 -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"' -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/CMSIS/Include/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/" main.cpp -o /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
+In file included from main.cpp:3:0:
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h:56:8: warning: extra tokens at end of #endif directive [enabled by default]
+ #endif LIGHTHOUSETIMER_H
+        ^
+
+----------------------------------------------------------
+Compiling variant.cpp to /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/variant.o
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-g++" -mthumb -mcpu=cortex-m0plus -Wall -Wextra -std=gnu++11 -c -fno-threadsafe-statics -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500  -Os -DDEBUG=0 -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"' -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/CMSIS/Include/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/" variant.cpp -o /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/variant.o
+
+----------------------------------------------------------
+Compiling LightHouseTimer.cpp to /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-g++" -mthumb -mcpu=cortex-m0plus -Wall -Wextra -std=gnu++11 -c -fno-threadsafe-statics -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500  -Os -DDEBUG=0 -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"' -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/CMSIS/Include/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000" -I"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/" LightHouseTimer.cpp -o /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o
+In file included from LightHouseTimer.cpp:1:0:
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h:56:8: warning: extra tokens at end of #endif directive [enabled by default]
+ #endif LIGHTHOUSETIMER_H
+        ^
+
+----------------------------------------------------------
+Creating ELF binary
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-gcc" -Os -Wl,--gc-sections -save-temps "-T/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000/linker_scripts/gcc/flash_with_bootloader.ld" "-Wl,-Map,/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.map" --specs=nano.specs --specs=nosys.specs -mcpu=cortex-m0plus -mthumb -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align -o "/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.elf" /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/variant.o /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o -Wl,--start-group -lm "/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/lib/libcore.a" -Wl,--end-group
+----------------------------------------------------------
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-nm" "/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.elf" >"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging_symbols.txt"
+----------------------------------------------------------
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-size" --format=sysv -t -x /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.elf
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.elf  :
+section              size         addr
+.text              0x2030       0x2000
+.data                0xfc   0x20000000
+.bss                0x944   0x200000fc
+.ARM.attributes      0x28          0x0
+.comment             0x80          0x0
+.debug_info       0x17bdd          0x0
+.debug_abbrev      0x259e          0x0
+.debug_loc         0x478c          0x0
+.debug_aranges      0x548          0x0
+.debug_ranges       0xd80          0x0
+.debug_line        0x3663          0x0
+.debug_str         0x6939          0x0
+.debug_frame        0xec8          0x0
+Total             0x2d54b
+
+
+----------------------------------------------------------
+Creating Flash binary
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-objcopy" -O binary /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.elf /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.bin
+----------------------------------------------------------
+Creating Flash binary
+"/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/arm-none-eabi-objcopy" -O ihex /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.elf /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LighthouseLogging.hex
