@@ -1,6 +1,8 @@
 #define ARDUINO_MAIN
 #include "Arduino.h"
 #include "LightHouseTimer.h"
+#include "WirelessLove.h"
+
 
 static volatile uint16_t startMicroseconds;
 static volatile uint16_t stopMicroseconds;
@@ -44,6 +46,7 @@ int main( void )
     /********************* SETUP *******************************/ 
     initTimer();                                    // the counter value is frequently polled from the Sensors every time an Interrupt on their respective pins occurs, in this function its frequency is initialized 
     initSensors();                                  // each sensor conntected to the board is initialized here  
+    initWirelessLove(); 
 
     pinMode(8,INPUT); 
     pinMode(9,INPUT); 
@@ -64,7 +67,8 @@ int main( void )
 
     for (;;)
     {
-       printSensorValues();  
+        printMacAddress();
+        printSensorValues();  
     }
 
     return 0;

@@ -27,6 +27,8 @@ ifeq ($(UNAME_S),Linux)
 	SEP=/
 	MKDIR= mkdir -p
 endif
+WIFIPATH = WiFi101/src/
+VPATH = src : $(WIFIPATH) : $(WIFIPATH)/driver/source : $(WIFIPATH)/common/source : $(WIFIPATH)/bsp/source : $(WIFIPATH)/bus_wrapper/source/ : $(WIFIPATH)/socket/source/: $(WIFIPATH)/spi_flash/source
 
 UPLOAD_BOSSA=$(MODULE_PATH)/tools/bossac
 ARM_GCC_PATH?=$(MODULE_PATH)/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
@@ -73,7 +75,7 @@ ELF=$(NAME).elf
 BIN=$(NAME).bin
 HEX=$(NAME).hex
 
-INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/" -I"$(MODULE_PATH)/WiFi101/src/"
+INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/" -I"$(MODULE_PATH)/WiFi101/src/" 
 
 
 # -----------------------------------------------------------------------------
@@ -86,20 +88,33 @@ LDFLAGS= --specs=nano.specs --specs=nosys.specs -mcpu=cortex-m0plus -mthumb -Wl,
 
 # -----------------------------------------------------------------------------
 # Source files and objects
-SOURCES= \
-	main.cpp \
-	variant.cpp \
-	LightHouseTimer.cpp
 
-OBJECTS=$(addprefix $(BUILD_PATH)/, $(SOURCES:.cpp=.o))
-DEPS=$(addprefix $(BUILD_PATH)/, $(SOURCES:.cpp=.o))
+MAIN_SOURCES=$(subst src/,,$(wildcard src/*.cpp))
 
-all: print_info $(SOURCES) $(BIN) $(HEX) $(AS_BUILD)
+OBJECTS=$(addprefix $(BUILD_PATH)/, $(MAIN_SOURCES:.cpp=.o))
+DEPS=$(addprefix $(BUILD_PATH)/, $(MAIN_SOURCES:.cpp=.o))
 
-$(ELF): Makefile $(BUILD_PATH) $(OBJECTS)
+WIFI_CPP_SOURCES=$(subst WiFi101/src/,,$(wildcard WiFi101/src/*.cpp))
+WIFI_CPP_SOURCES+=$(subst WiFi101/src/bus_wrapper/source/,,$(wildcard WiFi101/src/bus_wrapper/source/*.cpp))
+WIFI_CPP_OBJECTS=$(addprefix $(BUILD_PATH)/, $(WIFI_CPP_SOURCES:.cpp=.o))
+
+WIFI_C_SOURCES=$(subst WiFi101/src/driver/source/,,$(wildcard WiFi101/src/driver/source/*.c))
+WIFI_C_SOURCES+=$(subst WiFi101/src/common/source/,,$(wildcard WiFi101/src/common/source/*.c))
+WIFI_C_SOURCES+=$(subst WiFi101/src/bsp/source/,,$(wildcard WiFi101/src/bsp/source/*.c))
+WIFI_C_SOURCES+=$(subst WiFi101/src/socket/source/,,$(wildcard WiFi101/src/socket/source/*.c))
+WIFI_C_SOURCES+=$(subst WiFi101/src/bus_wrapper/source/,,$(wildcard WiFi101/src/bus_wrapper/source/*.c))
+WIFI_C_SOURCES+=$(subst WiFi101/src/spi_flash/source/,,$(wildcard WiFi101/src/spi_flash/source/*.c))
+WIFI_C_OBJECTS=$(addprefix $(BUILD_PATH)/, $(WIFI_C_SOURCES:.c=.o))
+
+
+
+
+all: print_info $(WIFI_C_SOURCES) $(WIFI_CPP_SOURCES) $(MAIN_SOURCES) $(WIFI_CPP_SOURCES) $(BIN) $(HEX) $(AS_BUILD)
+
+$(ELF): Makefile $(BUILD_PATH) $(OBJECTS) $(WIFI_CPP_OBJECTS) $(WIFI_C_OBJECTS)
 	@echo ----------------------------------------------------------
 	@echo Creating ELF binary
-	"$(CC)" -Os -Wl,--gc-sections -save-temps "-T$(LNK_SCRIPT)" "-Wl,-Map,$(BUILD_PATH)/$(NAME).map" $(LDFLAGS) -o "$(BUILD_PATH)/$(ELF)" $(OBJECTS) -Wl,--start-group -lm "$(MODULE_PATH)/lib/libcore.a" -Wl,--end-group
+	"$(CC)" -Os -Wl,--gc-sections -save-temps "-T$(LNK_SCRIPT)" "-Wl,-Map,$(BUILD_PATH)/$(NAME).map" $(LDFLAGS) -o "$(BUILD_PATH)/$(ELF)" $(OBJECTS) $(WIFI_CPP_OBJECTS) $(WIFI_C_OBJECTS) -Wl,--start-group -lm "$(MODULE_PATH)/lib/libcore.a" -Wl,--end-group
 	@echo ----------------------------------------------------------
 	"$(NM)" "$(BUILD_PATH)/$(ELF)" >"$(BUILD_PATH)/$(NAME)_symbols.txt"
 	@echo ----------------------------------------------------------
@@ -115,6 +130,12 @@ $(HEX): $(ELF)
 	@echo Creating Flash binary
 	"$(OBJCOPY)" -O ihex $(BUILD_PATH)/$< $(BUILD_PATH)/$@
 
+$(BUILD_PATH)/%.o: %.c
+	@echo ----------------------------------------------------------
+	@echo Compiling $< to $@
+	"$(CC)" $(CFLAGS) $(CFLAGS_EXTRA) $(INCLUDES) $< -o $@
+	@echo 
+
 $(BUILD_PATH)/%.o: %.cpp
 	@echo ----------------------------------------------------------
 	@echo Compiling $< to $@
@@ -129,6 +150,8 @@ $(BUILD_PATH):
 print_info:
 	@echo ----------------------------------------------------------
 	@echo Compiling Application using
+	@echo C Sources = $(WIFI_C_SOURCES) 
+	@echo C Objects = $(WIFI_C_OBJECTS)
 	@echo BASE PATH = $(MODULE_PATH)
 	@echo GCC  PATH = $(ARM_GCC_PATH)
 

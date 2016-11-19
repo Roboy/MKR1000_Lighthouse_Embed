@@ -67,5 +67,6 @@ void initTimer();
  * @brief initializes the interrupt requests function pointers of the Sensors
  * */
 void initSensor(Sensor sensor, void (* rising_IRQ)(void), void (* falling_IRQ)(void));
+void printSensorValues();
 
 #endif // LIGHTHOUSETIMER_H

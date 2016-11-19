@@ -1,6 +1,6 @@
-/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o: \
- src/LightHouseTimer.cpp \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h \
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/SPI.o: \
+ src/SPI.cpp \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/SPI.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/interrupt.h \
@@ -77,6 +77,7 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WString.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Tone.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WMath.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/HardwareSerial.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
@@ -100,4 +101,5 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USB_host.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_private.h

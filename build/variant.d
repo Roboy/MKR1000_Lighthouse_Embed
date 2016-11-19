@@ -1,5 +1,5 @@
 /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/variant.o: \
- variant.cpp \
+ src/variant.cpp \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000/variant.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WVariant.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/sam.h \

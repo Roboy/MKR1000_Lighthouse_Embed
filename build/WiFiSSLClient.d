@@ -1,6 +1,6 @@
-/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o: \
- src/LightHouseTimer.cpp \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h \
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/WiFiSSLClient.o: \
+ WiFi101/src/WiFiSSLClient.cpp WiFi101/src/WiFiSSLClient.h \
+ WiFi101/src/WiFiClient.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/interrupt.h \
@@ -77,6 +77,7 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WString.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Tone.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WMath.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/HardwareSerial.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
@@ -100,4 +101,14 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USB_host.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Client.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/IPAddress.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/IPAddress.h \
+ WiFi101/src/socket/include/socket_buffer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_common.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_debug.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_internal.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_samd21.h

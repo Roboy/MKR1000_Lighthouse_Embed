@@ -1,6 +1,7 @@
-/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o: \
- src/LightHouseTimer.cpp \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h \
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/nm_bsp_arduino.o: \
+ WiFi101/src//bsp/source/nm_bsp_arduino.c \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_arduino.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/interrupt.h \
@@ -73,22 +74,8 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/pio/samd21g18a.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_constants.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WVariant.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WCharacter.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WString.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Tone.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WMath.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/HardwareSerial.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Print.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Printable.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/pulse.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/delay.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000/variant.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/SERCOM.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Uart.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/SERCOM.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_digital.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_analog.h \
@@ -97,7 +84,9 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBDesc.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBCore.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBAPI.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USB_host.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_common.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_debug.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_internal.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_samd21.h
