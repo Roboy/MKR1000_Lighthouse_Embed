@@ -1,21 +1,35 @@
 #include "WirelessLove.h"
 
-void printMacAddress(); 
-static void listNetworks(); 
-static void printEncryptionType(uint8_t); 
+static int printMacAddress(void); 
+static int printEncryptionType(void);
+static int printAvailableNetworks(void); 
+static int printWifiStatus(void); 
+static int initWifi(void); 
+static int initUDPSockets(void); 
+static int getConnectionStatus(void);
 
-void initWirelessLove(){
 
-    // check for presence of the WiFiShield:
-    if(WiFi.status() == WL_NO_SHIELD) {
-        Serial.println("WiFi shield not present"); 
-    }
+static int      LoveStatus = WL_IDLE_STATUS;
+static char     ssid[]="1-UTUM-Guest"; 
+static char     packetBuffer[255]= {0}; 
+static bool     timeout = false; 
 
-    printMacAddress(); 
-    listNetworks(); 
-}
+static uint16_t  sensorPort_l= 2390; 
+static uint16_t  commandPort_l = 2391; 
 
-void printMacAddress(){
+static uint16_t  commandPort_t = 3010; 
+static uint16_t  sensorPort_t = 3011; 
+
+static const char  remoteIP[] = "10.25.12.143"; 
+static const char  TestBuffer[]="Hello World"; 
+
+
+static WiFiUDP  UDP_sensors; 
+static WiFiUDP  UDP_commands; 
+
+
+static int printMacAddress(void)
+{
     byte mac[6]; 
     WiFi.macAddress(mac); 
     Serial.print("MAC: "); 
@@ -23,9 +37,34 @@ void printMacAddress(){
         Serial.print("MAC: "); 
         Serial.println(mac[i], HEX); 
     }
+    return (int) ES_SUCCESS; 
 }
 
-static void listNetworks() {
+
+
+static int printEncryptionType(uint8_t authType)
+{
+    switch(authType){
+        case ENC_TYPE_WEP:
+            Serial.print("WEP"); 
+            break;
+        case ENC_TYPE_TKIP:
+            Serial.print("WPA"); 
+            break;
+        case ENC_TYPE_CCMP:
+            Serial.print("WPA2"); 
+            break;
+        case ENC_TYPE_NONE:
+            Serial.print("NONE"); 
+        default:
+            Serial.print("AUTO/DEFAULT"); 
+            break;
+    }
+    return (int) ES_SUCCESS; 
+}
+
+static int printAvailableNetworks() 
+{
     int numSSID = WiFi.scanNetworks(); 
     if( -1 == numSSID){ 
         Serial.println("Could not get a valid WiFi connection"); 
@@ -44,23 +83,85 @@ static void listNetworks() {
         printEncryptionType(WiFi.encryptionType(foundNet)); 
         Serial.flush(); 
     }
+    return (int) ES_SUCCESS; 
 }
 
-static void printEncryptionType(uint8_t authType){
-    switch(authType){
-        case ENC_TYPE_WEP:
-            Serial.print("WEP"); 
-            break;
-        case ENC_TYPE_TKIP:
-            Serial.print("WPA"); 
-            break;
-        case ENC_TYPE_CCMP:
-            Serial.print("WPA2"); 
-            break;
-        case ENC_TYPE_NONE:
-            Serial.print("NONE"); 
-        default:
-            Serial.print("AUTO/DEFAULT"); 
-            break;
-    }
+static int getConnectionStatus(void)
+{
+    int dV = LoveStatus; 
+    return dV; 
 }
+
+static int printWifiStatus(void)
+{
+    Serial.print("SSID: "); 
+    Serial.println(WiFi.SSID()); 
+
+    IPAddress ip = WiFi.localIP(); 
+    Serial.print("IP Address: "); 
+    Serial.println(ip);
+
+    long rssi = WiFi.RSSI(); 
+    Serial.print("signal strength (RSSI):"); 
+    Serial.print(rssi); 
+    Serial.println(" dBm"); 
+
+    return (int) ES_SUCCESS; 
+}
+
+static int initWifi(void)
+{
+    uint32_t timoutCounter = 0; 
+    
+    // check for presence of the WiFiShield:
+    if(WiFi.status() == WL_NO_SHIELD) {
+        Serial.println("WiFi shield not present"); 
+        return (int) ES_INIT_FAILED_NO_SHIELD;  
+    }
+
+    // wait max 10 seconds to connect to the provided Wifi
+    while(WiFi.begin(ssid) != WL_CONNECTED && !timeout){
+        delay(1000); 
+        timoutCounter++; 
+        if(timoutCounter == 10){
+            timeout = true; 
+        }
+    }
+
+    if(true == timeout){
+        LoveStatus = ES_INIT_FAILED_CANNOT_CONNECT; 
+        return (int) ES_INIT_FAILED_CANNOT_CONNECT; 
+    }
+
+    LoveStatus = WL_CONNECTED;
+    return (int) ES_SUCCESS; 
+}
+
+static int initUDPSockets(void)
+{
+    // Start WiFiUDP socket, listening at localport
+    if (0 == UDP_sensors.begin(sensorPort_l)){
+       return (int) ES_INIT_FAILED_UDP_SOCKET; 
+    }
+
+    if (0 == UDP_sensors.begin(commandPort_l)){
+       return (int) ES_INIT_FAILED_UDP_SOCKET; 
+    }
+
+    return (int) ES_SUCCESS; 
+}
+
+static int sendUDPTestPacket(void)
+{
+    UDP_sensors.beginPacket(remoteIP, sensorPort_t); 
+    UDP_sensors.write(TestBuffer);
+    UDP_sensors.endPacket();
+    Serial.print("Sending "); 
+    Serial.print(TestBuffer); 
+    Serial.println(" via UDP Socket"); 
+
+    return (int) ES_SUCCESS; 
+}
+
+
+WIFI_LOVE const whylove = {printMacAddress, printEncryptionType, printAvailableNetworks, printWifiStatus, initWifi, initUDPSockets , sendUDPTestPacket, getConnectionStatus}; 

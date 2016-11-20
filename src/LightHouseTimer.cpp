@@ -48,7 +48,7 @@ void initSensors(){
 void initTimer(){
     // TODO: Setup Frequence to properly count the ticks in µC
     // divides the source frequence of the GLCK with the provided divide value
-    REG_GCLK_GENDIV = GCLK_GENDIV_DIV(6) |         
+    REG_GCLK_GENDIV = GCLK_GENDIV_DIV(3) |         
         GCLK_GENDIV_ID(4);           
     while (GCLK->STATUS.bit.SYNCBUSY);              
 
@@ -67,7 +67,7 @@ void initTimer(){
     REG_TC4_CTRLA |= TC_CTRLA_MODE_COUNT16;             
     while (TC4->COUNT16.STATUS.bit.SYNCBUSY);           
 
-    REG_TC4_CTRLA |= TC_CTRLA_PRESCALER_DIV4|                 
+    REG_TC4_CTRLA |= TC_CTRLA_PRESCALER_DIV16|                 
         TC_CTRLA_ENABLE;                                    
     while (TC4->COUNT16.STATUS.bit.SYNCBUSY);          
 }
@@ -78,18 +78,24 @@ void printSensorValues(void){
     duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
     while(duration != 0){
         //TODO: Send data via WiFi
+        Serial.print("Sensor1: \t"); 
+        Serial.println(duration); 
         duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
     }
 
     duration = FIFO128_read(sensor_2.mPulseWidthFIFO); 
     while(duration != 0){
         //TODO: Send data via WiFi
+        Serial.print("Sensor2: \t"); 
+        Serial.println(duration); 
         duration = FIFO128_read(sensor_2.mPulseWidthFIFO); 
     }
 
     duration = FIFO128_read(sensor_3.mPulseWidthFIFO); 
     while(duration != 0){
         //TODO: Send data via WiFi
+        Serial.print("Sensor3: \t"); 
+        Serial.println(duration); 
         duration = FIFO128_read(sensor_3.mPulseWidthFIFO); 
     }
 }

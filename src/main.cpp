@@ -3,13 +3,7 @@
 #include "LightHouseTimer.h"
 #include "WirelessLove.h"
 
-
-static volatile uint16_t startMicroseconds;
-static volatile uint16_t stopMicroseconds;
-static volatile uint16_t width[1000]; 
-static volatile uint32_t counter = 0; 
-static volatile bool mavailable = false; 
-
+static int progStatus; 
 // Weak empty variant initialization function.
 // May be redefined by variant files.
 void initVariant() __attribute__((weak));
@@ -18,18 +12,7 @@ void initVariant() { }
 // Initialize C library
 extern "C" void __libc_init_array(void);
 
-void test_Print(void){
-    Serial.println("TESTTESTTESTESTTEST"); 
-}
-
-void test_Print_2(void){
-    Serial.println(""); 
-    Serial.println(""); 
-    Serial.println(""); 
-    Serial.println(""); 
-}
-
-
+// TODO: Add Logging System to the project
 int main( void )
 {
     init();
@@ -44,9 +27,12 @@ int main( void )
 #endif
 
     /********************* SETUP *******************************/ 
-    initTimer();                                    // the counter value is frequently polled from the Sensors every time an Interrupt on their respective pins occurs, in this function its frequency is initialized 
-    initSensors();                                  // each sensor conntected to the board is initialized here  
-    initWirelessLove(); 
+   
+    // the counter value is frequently polled from the Sensors every time an Interrupt on their respective pins occurs, in this function the frequency of the Counter is initialized 
+    initTimer();                                        
+    
+    // each sensor conntected to the board is initialized here  
+    initSensors();                                  
 
     pinMode(8,INPUT); 
     pinMode(9,INPUT); 
@@ -64,12 +50,23 @@ int main( void )
     attachInterrupt(2, falling_IRQ_S3, FALLING); 
 
     /********************* SETUP *******************************/ 
+    //WiFi and UDP Sockets are initialized here
+    
+    if(ES_SUCCESS != whylove.initWifi()){
+        Serial.println("Error in initializing the WiFi!"); 
+    }else{
+        whylove.printWifiStatus(); 
+    }
+
+    if(ES_SUCCESS != whylove.initUDPSockets()){
+        Serial.println("Error in initializing the UDP Sockets!"); 
+    }
 
     for (;;)
     {
-        printMacAddress();
-        printSensorValues();  
+        delay(1000); 
+        whylove.printWifiStatus(); 
+        whylove.sendUDPTestPacket(); 
     }
-
     return 0;
 }

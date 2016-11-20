@@ -121,4 +121,6 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiSSLClient.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiServer.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Server.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Server.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiUdp.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Udp.h
