@@ -1,16 +1,7 @@
 #ifndef PROTOLIGHTHOUSE_H
 #define PROTOLIGHTHOUSE_H
-#include "lighthouse_sensor.pb.h"
-#include "LightHouseTimer.h"
-#include "WirelessLove.h"
 
-typedef enum ES_PROTO{
-    ES_PROTO_FAIL_INIT,
-    ES_PROTO_FAIL_ENCODE,
-    ES_PROTO_FAIL_DECODE,
-    ES_PROTO_ERROR, 
-    ES_PROTO_SUCCESS,
-}ES_PROTO; 
+#include "board.h"
 
 typedef struct _PROTO_LOVE{
     int         (* const encode_send_Proto)(void);

@@ -28,7 +28,7 @@ ifeq ($(UNAME_S),Linux)
 	MKDIR= mkdir -p
 endif
 WIFIPATH = WiFi101/src/
-VPATH = src : $(WIFIPATH) : $(WIFIPATH)/driver/source : $(WIFIPATH)/common/source : $(WIFIPATH)/bsp/source : $(WIFIPATH)/bus_wrapper/source/ : $(WIFIPATH)/socket/source/: $(WIFIPATH)/spi_flash/source : proto/source/
+VPATH = src : $(WIFIPATH) : $(WIFIPATH)/driver/source : $(WIFIPATH)/common/source : $(WIFIPATH)/bsp/source : $(WIFIPATH)/bus_wrapper/source/ : $(WIFIPATH)/socket/source/: $(WIFIPATH)/spi_flash/source : proto/source/ : src/extern/
 
 UPLOAD_BOSSA=$(MODULE_PATH)/tools/bossac
 ARM_GCC_PATH?=$(MODULE_PATH)/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
@@ -62,7 +62,11 @@ SIZE=$(ARM_GCC_PATH)size
 
 LNK_SCRIPT = $(MODULE_PATH)/MKRLib/variants/mkr1000/linker_scripts/gcc/flash_with_bootloader.ld
 CFLAGS_EXTRA= -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"'
-CFLAGS=-mthumb -mcpu=cortex-m0plus -Wall -Wextra -std=gnu++11 -c -fno-threadsafe-statics -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500 
+CFLAGS=-mthumb -mcpu=cortex-m0plus -Wall -Wextra -c -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500 
+
+CXXFLAGS_EXTRA= -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"'
+CXXFLAGS=-mthumb -mcpu=cortex-m0plus -Wall -Wextra -std=gnu++11 -c -fno-threadsafe-statics -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500 
+
 
 ifdef DEBUG
   #CFLAGS+=-g3 -O1 -DDEBUG=1
@@ -75,7 +79,7 @@ ELF=$(NAME).elf
 BIN=$(NAME).bin
 HEX=$(NAME).hex
 
-INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/" -I"$(MODULE_PATH)/WiFi101/src/" -I"$(MODULE_PATH)/proto/include"
+INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/" -I"$(MODULE_PATH)/WiFi101/src/" -I"$(MODULE_PATH)/proto/include" -I"$(MODULE_PATH)/include/core/"
 
 # -----------------------------------------------------------------------------
 # Linker options
@@ -89,6 +93,7 @@ LDFLAGS= --specs=nano.specs --specs=nosys.specs -mcpu=cortex-m0plus -mthumb -Wl,
 # Source files and objects
 
 MAIN_SOURCES=$(subst src/,,$(wildcard src/*.cpp))
+MAIN_SOURCES+=$(subst src/extern/,,$(wildcard src/extern/*.cpp))
 
 OBJECTS=$(addprefix $(BUILD_PATH)/, $(MAIN_SOURCES:.cpp=.o))
 DEPS=$(addprefix $(BUILD_PATH)/, $(MAIN_SOURCES:.cpp=.o))
@@ -138,7 +143,7 @@ $(BUILD_PATH)/%.o: %.c
 $(BUILD_PATH)/%.o: %.cpp
 	@echo ----------------------------------------------------------
 	@echo Compiling $< to $@
-	"$(LKELF)" $(CFLAGS) $(CFLAGS_EXTRA) $(INCLUDES) $< -o $@
+	"$(LKELF)" $(CXXFLAGS) $(CXXFLAGS_EXTRA) $(INCLUDES) $< -o $@
 	@echo 
 	
 $(BUILD_PATH):

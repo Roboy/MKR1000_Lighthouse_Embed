@@ -1,10 +1,10 @@
 #define ARDUINO_MAIN
-#include "Arduino.h"
-#include "LightHouseTimer.h"
-#include "protoLighthouse.h"
-#include "WirelessLove.h"
+
+#include "board.h"
 
 static int progStatus; 
+static int WiFiInfoCounter; 
+
 // Weak empty variant initialization function.
 // May be redefined by variant files.
 void initVariant() __attribute__((weak));
@@ -13,23 +13,29 @@ void initVariant() { }
 // Initialize C library
 extern "C" void __libc_init_array(void);
 
-// TODO: Add Logging System to the project
-int main( void )
+static void initPeripherals()
 {
-    init();
+    initCounter(); 
+    initSensors();   
 
-    __libc_init_array();
-    initVariant();
+    if(ES_WIFI_SUCCESS != whylove.initWifi()){
+        Serial.println("Error in initializing the WiFi!"); 
+    }else{
+        whylove.printWifiStatus(); 
+    }
 
-    delay(1);
-#if defined(USBCON)
-    USBDevice.init();
-    USBDevice.attach();
-#endif
+    if(ES_WIFI_SUCCESS != whylove.initUDPSockets()){
+        Serial.println("Error in initializing the UDP Sockets!"); 
+    }
 
-    /********************* SETUP *******************************/ 
-                                 
+    if(ES_PROTO_SUCCESS != protoLove.initProto())
+    {
+        Serial.println("Error in initializing ProtoBuffers!"); 
+    }
+}
 
+static void initPins_Interrupts(void)
+{
     pinMode(8,INPUT); 
     pinMode(9,INPUT); 
     pinMode(10,INPUT); 
@@ -44,33 +50,30 @@ int main( void )
     attachInterrupt(0, falling_IRQ_S1, FALLING); 
     attachInterrupt(1, falling_IRQ_S2, FALLING); 
     attachInterrupt(2, falling_IRQ_S3, FALLING); 
+}
 
-    /********************* SETUP *******************************/ 
-    //WiFi and UDP Sockets are initialized here
+// TODO: Add Logging System to the project
+int main( void )
+{
+    init();
+    __libc_init_array();
+    initVariant();
+    delay(1);
+
+#if defined(USBCON)
+    USBDevice.init();
+    USBDevice.attach();
+#endif
+
+    initPeripherals(); 
+    initPins_Interrupts(); 
     
-    if(ES_SUCCESS != whylove.initWifi()){
-        Serial.println("Error in initializing the WiFi!"); 
-    }else{
-        whylove.printWifiStatus(); 
-    }
-
-    if(ES_SUCCESS != whylove.initUDPSockets()){
-        Serial.println("Error in initializing the UDP Sockets!"); 
-    }
-
-    if(ES_PROTO_SUCCESS != protoLove.initProto())
-    {
-        Serial.println("Error in initializing ProtoBuffers!"); 
-    }
-
-    // the counter value is frequently polled from the Sensors every time an Interrupt on their respective pins occurs, in this function the frequency of the Counter is initialized 
-    initTimer(); 
-    // each sensor conntected to the board is initialized here  
-    initSensors();   
-
     for (;;)
     {
+        //whylove.printWifiStatus(); 
+        delay(10); 
         processSensorValues(); 
     }
+
     return 0;
 }

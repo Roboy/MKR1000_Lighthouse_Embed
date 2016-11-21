@@ -1,15 +1,13 @@
 /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/protoLighthouse.o: \
  src/protoLighthouse.cpp \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/lighthouse_sensor.pb.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/interrupt.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/io.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/binary.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/itoa.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/board.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Arduino.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/avr/pgmspace.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/avr/interrupt.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/avr/io.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/binary.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/itoa.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/sam.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/samd21.h \
@@ -74,61 +72,42 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/instance/usb.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/instance/wdt.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/CMSIS/Device/ATMEL/samd21/include/pio/samd21g18a.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_constants.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WVariant.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WCharacter.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WString.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Tone.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WMath.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/HardwareSerial.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Print.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Printable.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/pulse.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/delay.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/wiring_constants.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/WVariant.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/WCharacter.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/WString.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/avr/pgmspace.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Tone.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Arduino.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/WMath.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/HardwareSerial.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Stream.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Print.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Printable.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/pulse.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/delay.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/variants/mkr1000/variant.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/SERCOM.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Uart.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/SERCOM.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_digital.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_analog.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wiring_shift.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WInterrupts.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBDesc.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBCore.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USBAPI.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Stream.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/RingBuffer.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/USB_host.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/USB/samd21_host.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WirelessLove.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/SPI.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFi101.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/driver/include/m2m_wifi.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_common.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_debug.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_internal.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_samd21.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/driver/include/m2m_types.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/driver/source/nmdrv.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiClient.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Client.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/IPAddress.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/IPAddress.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket_buffer.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiSSLClient.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiServer.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Server.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiUdp.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Udp.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/SERCOM.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Uart.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/SERCOM.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/RingBuffer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/wiring.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/wiring_digital.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/wiring_analog.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/wiring_shift.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/WInterrupts.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/USBDesc.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/USBCore.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/USBAPI.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Stream.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/RingBuffer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/USB_host.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/samd21_host.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wirelessLove.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/sensors.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/lighthouse_sensor.pb.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb_encode.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb_decode.h
