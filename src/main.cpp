@@ -1,6 +1,7 @@
 #define ARDUINO_MAIN
 #include "Arduino.h"
 #include "LightHouseTimer.h"
+#include "protoLighthouse.h"
 #include "WirelessLove.h"
 
 static int progStatus; 
@@ -27,12 +28,7 @@ int main( void )
 #endif
 
     /********************* SETUP *******************************/ 
-   
-    // the counter value is frequently polled from the Sensors every time an Interrupt on their respective pins occurs, in this function the frequency of the Counter is initialized 
-    initTimer();                                        
-    
-    // each sensor conntected to the board is initialized here  
-    initSensors();                                  
+                                 
 
     pinMode(8,INPUT); 
     pinMode(9,INPUT); 
@@ -62,11 +58,19 @@ int main( void )
         Serial.println("Error in initializing the UDP Sockets!"); 
     }
 
+    if(ES_PROTO_SUCCESS != protoLove.initProto())
+    {
+        Serial.println("Error in initializing ProtoBuffers!"); 
+    }
+
+    // the counter value is frequently polled from the Sensors every time an Interrupt on their respective pins occurs, in this function the frequency of the Counter is initialized 
+    initTimer(); 
+    // each sensor conntected to the board is initialized here  
+    initSensors();   
+
     for (;;)
     {
-        delay(1000); 
-        whylove.printWifiStatus(); 
-        whylove.sendUDPTestPacket(); 
+        processSensorValues(); 
     }
     return 0;
 }

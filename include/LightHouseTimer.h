@@ -2,6 +2,24 @@
 #define LIGHTHOUSETIMER_H
 
 #include "Arduino.h"
+#include "WirelessLove.h"
+
+typedef enum _SENSORTYPE{
+    SENSOR_1 = 1,
+    SENSOR_2, 
+    SENSOR_3,
+}SENSORTYPE; 
+
+typedef struct SensorData{
+    int32_t id; 
+    int32_t timestamp;
+    bool    sensor0;
+    float   angel0_h; 
+    float   angel0_v;
+    bool    sensor1;
+    float   angel1_h;
+    float   angel1_v;
+}SensorData; 
 
 /**
  * see mikrocontroller forum tutorial 
@@ -54,7 +72,7 @@ void falling_IRQ_S3(void);
 /**
  * @brief initializes the FIFO Buffers of the Sensor
  * */
-void initSensors(void); 
+void initSensors(); 
 
 bool decodeDuration(int duration, bool& skip, bool& rotor, bool& data); 
 
@@ -66,7 +84,8 @@ void initTimer();
 /**
  * @brief initializes the interrupt requests function pointers of the Sensors
  * */
-void initSensor(Sensor sensor, void (* rising_IRQ)(void), void (* falling_IRQ)(void));
-void printSensorValues();
+void initSensor(); 
+
+void processSensorValues();
 
 #endif // LIGHTHOUSETIMER_H

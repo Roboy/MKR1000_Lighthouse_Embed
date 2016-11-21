@@ -123,4 +123,9 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiServer.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Server.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiUdp.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Udp.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Udp.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/lighthouse_sensor.pb.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/WirelessLove.h

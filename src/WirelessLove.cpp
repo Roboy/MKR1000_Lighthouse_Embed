@@ -1,4 +1,5 @@
 #include "WirelessLove.h"
+#include "protoLighthouse.h"
 
 static int printMacAddress(void); 
 static int printEncryptionType(void);
@@ -106,6 +107,10 @@ static int printWifiStatus(void)
     Serial.print(rssi); 
     Serial.println(" dBm"); 
 
+    uint32_t UDPBufferSize = SOCKET_BUFFER_MTU; 
+    Serial.print("Buffer Size from UDP Socket: "); 
+    Serial.println(UDPBufferSize); 
+
     return (int) ES_SUCCESS; 
 }
 
@@ -156,12 +161,25 @@ static int sendUDPTestPacket(void)
     UDP_sensors.beginPacket(remoteIP, sensorPort_t); 
     UDP_sensors.write(TestBuffer);
     UDP_sensors.endPacket();
-    Serial.print("Sending "); 
-    Serial.print(TestBuffer); 
-    Serial.println(" via UDP Socket"); 
-
+    
     return (int) ES_SUCCESS; 
 }
 
+static int sendUDPPacket(const uint8_t * buffer, size_t size)
+{
+    UDP_sensors.beginPacket(remoteIP, sensorPort_t); 
+    if(size != UDP_sensors.write(buffer, size)){
+        Serial.println("Size of the UDP Package to big! Truncated overlapping data"); 
+    }
+    UDP_sensors.endPacket();
+    return (int) ES_SUCCESS; 
+}
 
-WIFI_LOVE const whylove = {printMacAddress, printEncryptionType, printAvailableNetworks, printWifiStatus, initWifi, initUDPSockets , sendUDPTestPacket, getConnectionStatus}; 
+static int receiveUDPPacket(const uint8_t *buffer, size_t size)
+{
+    (void) buffer; 
+    (void) size; 
+    return (int) ES_SUCCESS; 
+}
+
+WIFI_LOVE const whylove = {printMacAddress, printEncryptionType, printAvailableNetworks, printWifiStatus, initWifi, initUDPSockets , sendUDPTestPacket, sendUDPPacket, receiveUDPPacket, getConnectionStatus}; 

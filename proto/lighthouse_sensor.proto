@@ -1,0 +1,35 @@
+syntax="proto2"; 
+import "nanopb.proto"; 
+
+package mkr1000.lighthouse;
+
+message configObject{
+    // host-ip to which the mkr1000 should send the sensor data
+    optional string ip = 1; 
+    // port to which the mkr1000 should send its Datafragments / packages 
+    optional int32  port = 2; 
+    // id of the object wich the mkr1000 tracks 
+    optional int32 id = 3; 
+}
+
+message trackedObject{
+    message Sensor {
+        // identification of the sensor
+        optional int32 id = 1; 
+        // the timestamp of the measurements
+        repeated int32 timestamp = 2[(nanopb).max_count=10];
+        // sensor visible by lighthouse 0 
+        repeated bool sensors0 = 3[(nanopb).max_count=10];
+        // the horizontal angles of these sensors
+        repeated float angles0_h = 4[(nanopb).max_count=10];
+        // the vertical angles of these sensors
+        repeated float angles0_v = 5[(nanopb).max_count=10];
+        // which sensors are visible by lighthouse 1
+        repeated bool sensors1 = 6[(nanopb).max_count=10];
+        // the horizontal angles of these sensors
+        repeated float angles1_h = 7[(nanopb).max_count=10];
+        // the vertical angles of these sensors
+        repeated float angles1_v = 8[(nanopb).max_count=10];
+    }
+    repeated Sensor values = 1[(nanopb).max_count=3];
+}

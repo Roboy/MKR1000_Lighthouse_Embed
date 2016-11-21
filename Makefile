@@ -28,7 +28,7 @@ ifeq ($(UNAME_S),Linux)
 	MKDIR= mkdir -p
 endif
 WIFIPATH = WiFi101/src/
-VPATH = src : $(WIFIPATH) : $(WIFIPATH)/driver/source : $(WIFIPATH)/common/source : $(WIFIPATH)/bsp/source : $(WIFIPATH)/bus_wrapper/source/ : $(WIFIPATH)/socket/source/: $(WIFIPATH)/spi_flash/source
+VPATH = src : $(WIFIPATH) : $(WIFIPATH)/driver/source : $(WIFIPATH)/common/source : $(WIFIPATH)/bsp/source : $(WIFIPATH)/bus_wrapper/source/ : $(WIFIPATH)/socket/source/: $(WIFIPATH)/spi_flash/source : proto/source/
 
 UPLOAD_BOSSA=$(MODULE_PATH)/tools/bossac
 ARM_GCC_PATH?=$(MODULE_PATH)/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
@@ -75,7 +75,7 @@ ELF=$(NAME).elf
 BIN=$(NAME).bin
 HEX=$(NAME).hex
 
-INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/" -I"$(MODULE_PATH)/WiFi101/src/"
+INCLUDES=-I"$(MODULE_PATH)/CMSIS/CMSIS/Include/" -I"$(MODULE_PATH)/CMSIS/Device/ATMEL/" -I"$(MODULE_PATH)/MKRLib/libraries/SPI/" -I"$(MODULE_PATH)/MKRLib/variants/mkr1000" -I"$(MODULE_PATH)/include/" -I"$(MODULE_PATH)/WiFi101/src/" -I"$(MODULE_PATH)/proto/include"
 
 # -----------------------------------------------------------------------------
 # Linker options
@@ -105,15 +105,15 @@ WIFI_C_SOURCES+=$(subst WiFi101/src/bus_wrapper/source/,,$(wildcard WiFi101/src/
 WIFI_C_SOURCES+=$(subst WiFi101/src/spi_flash/source/,,$(wildcard WiFi101/src/spi_flash/source/*.c))
 WIFI_C_OBJECTS=$(addprefix $(BUILD_PATH)/, $(WIFI_C_SOURCES:.c=.o))
 
+PROTO_C_SOURCES=$(subst proto/source/,, $(wildcard proto/source/*c))
+PROTO_C_OBJECTS=$(addprefix $(BUILD_PATH)/, $(PROTO_C_SOURCES:.c=.o))
 
+all: print_info $(PROTO_C_SOURCES) $(WIFI_C_SOURCES) $(WIFI_CPP_SOURCES) $(MAIN_SOURCES) $(WIFI_CPP_SOURCES) $(BIN) $(HEX) $(AS_BUILD)
 
-
-all: print_info $(WIFI_C_SOURCES) $(WIFI_CPP_SOURCES) $(MAIN_SOURCES) $(WIFI_CPP_SOURCES) $(BIN) $(HEX) $(AS_BUILD)
-
-$(ELF): Makefile $(BUILD_PATH) $(OBJECTS) $(WIFI_CPP_OBJECTS) $(WIFI_C_OBJECTS)
+$(ELF): Makefile $(BUILD_PATH) $(OBJECTS) $(WIFI_CPP_OBJECTS) $(WIFI_C_OBJECTS) $(PROTO_C_OBJECTS)
 	@echo ----------------------------------------------------------
 	@echo Creating ELF binary
-	"$(CC)" -Os -Wl,--gc-sections -save-temps "-T$(LNK_SCRIPT)" "-Wl,-Map,$(BUILD_PATH)/$(NAME).map" $(LDFLAGS) -o "$(BUILD_PATH)/$(ELF)" $(OBJECTS) $(WIFI_CPP_OBJECTS) $(WIFI_C_OBJECTS) -Wl,--start-group -lm "$(MODULE_PATH)/lib/libcore.a" -Wl,--end-group
+	"$(CC)" -Os -Wl,--gc-sections -save-temps "-T$(LNK_SCRIPT)" "-Wl,-Map,$(BUILD_PATH)/$(NAME).map" $(LDFLAGS) -o "$(BUILD_PATH)/$(ELF)" $(OBJECTS) $(WIFI_CPP_OBJECTS) $(WIFI_C_OBJECTS) $(PROTO_C_OBJECTS) -Wl,--start-group -lm "$(MODULE_PATH)/lib/libcore.a" -Wl,--end-group
 	@echo ----------------------------------------------------------
 	"$(NM)" "$(BUILD_PATH)/$(ELF)" >"$(BUILD_PATH)/$(NAME)_symbols.txt"
 	@echo ----------------------------------------------------------
@@ -149,8 +149,8 @@ $(BUILD_PATH):
 print_info:
 	@echo ----------------------------------------------------------
 	@echo Compiling Application using
-	@echo C Sources = $(WIFI_C_SOURCES) 
-	@echo C Objects = $(WIFI_C_OBJECTS)
+	@echo C Sources = $(PROTO_C_SOURCES) 
+	@echo C Objects = $(PROTO_C_OBJECTS)
 	@echo BASE PATH = $(MODULE_PATH)
 	@echo GCC  PATH = $(ARM_GCC_PATH)
 

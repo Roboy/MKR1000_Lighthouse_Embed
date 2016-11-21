@@ -1,5 +1,8 @@
-/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/LightHouseTimer.o: \
- src/LightHouseTimer.cpp \
+/home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/protoLighthouse.o: \
+ src/protoLighthouse.cpp \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/lighthouse_sensor.pb.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Arduino.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/avr/pgmspace.h \
@@ -126,6 +129,6 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiUdp.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/Udp.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/lighthouse_sensor.pb.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb_encode.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/LightHouseTimer.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb_decode.h

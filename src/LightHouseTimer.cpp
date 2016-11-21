@@ -4,34 +4,43 @@ volatile static Sensor sensor_1;
 volatile static Sensor sensor_2; 
 volatile static Sensor sensor_3; 
 
-void rising_IRQ_S1(void){
+static SensorData sensordata;
+
+void rising_IRQ_S1(void)
+{
     sensor_1.mStartT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
 }
 
-void rising_IRQ_S2(void){
+void rising_IRQ_S2(void)
+{
     sensor_2.mStartT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
 }
 
-void rising_IRQ_S3(void){
+void rising_IRQ_S3(void)
+{
     sensor_3.mStartT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
 }
 
-void falling_IRQ_S1(void){
+void falling_IRQ_S1(void)
+{
     sensor_1.mStopT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
     FIFO128_write(sensor_1.mPulseWidthFIFO, (sensor_1.mStopT - sensor_1.mStartT)); 
 }
 
-void falling_IRQ_S2(void){
+void falling_IRQ_S2(void)
+{
     sensor_2.mStopT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
     FIFO128_write(sensor_2.mPulseWidthFIFO, (sensor_2.mStopT - sensor_2.mStartT)); 
 }
 
-void falling_IRQ_S3(void){
+void falling_IRQ_S3(void)
+{
     sensor_3.mStopT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
     FIFO128_write(sensor_3.mPulseWidthFIFO, (sensor_3.mStopT - sensor_3.mStartT)); 
 }
 
-void initSensors(){
+void initSensors()
+{
     // init the FIFO Buffers
     FIFO_init(sensor_1.mPulseWidthFIFO); 
     FIFO_init(sensor_2.mPulseWidthFIFO); 
@@ -41,12 +50,11 @@ void initSensors(){
 /*
  *  (GCLK_SOURCE / GCLK_DIVIDE) / (PRESCALER + REGISTER COUNTS) = OVERFLOW FREQUENCE OF TCX
  *  (48Mhz / GCLK_DIVID) / PRESCALER + 2^16) = 2^16µS means
- *
+ *  Currenlty setted up to 1MHZ which equals count stamps of 1µS
  *
  * */
-
-void initTimer(){
-    // TODO: Setup Frequence to properly count the ticks in µC
+void initTimer()
+{
     // divides the source frequence of the GLCK with the provided divide value
     REG_GCLK_GENDIV = GCLK_GENDIV_DIV(3) |         
         GCLK_GENDIV_ID(4);           
@@ -72,30 +80,72 @@ void initTimer(){
     while (TC4->COUNT16.STATUS.bit.SYNCBUSY);          
 }
 
-void printSensorValues(void){
+// decode the detected Duration according to:
+// https://github.com/nairol/LighthouseRedox/blob/master/docs/Light%20Emissions.md
+static void decodeDuration(uint16_t duration)
+{
+    // which baseStation did emitted the sweep?
+    if( 60 < duration && 100 > duration)
+    {
+        sensordata.sensor1 = false; 
+        sensordata.sensor0 = true; 
+        sensordata.angel0_h = duration; 
+        sensordata.angel0_v = duration; 
+   
+    }
+
+    else if( 100 < duration && 140 > duration)
+    {
+        sensordata.sensor1 = true; 
+        sensordata.sensor0 = false; 
+        sensordata.angel1_h = duration; 
+        sensordata.angel1_v = duration; 
+
+    }
+    //TODO
+    // #1 decide whether vertically or horizontally
+    // #2 get the angle to the basestation from the sweep duration
+    
+}
+
+static void saveDuration(SENSORTYPE sensor, uint16_t duration)
+{
+    // fill with data
+    sensordata.id = (int32_t) sensor; 
+    sensordata.timestamp = 0; 
+    decodeDuration(duration); 
+    
+    // adds the decoded Sensor Data to the respective Sensor ProtoBuffer in the TrackedObject protob
+    protoLove.addSensor_Data(&sensordata);  
+}
+
+void processSensorValues(void)
+{
     uint16_t duration = 0; 
 
     duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
     while(duration != 0){
-        //TODO: Send data via WiFi
-        Serial.print("Sensor1: \t"); 
-        Serial.println(duration); 
+        saveDuration(SENSOR_1, duration);
+        protoLove.incrementSensorEntry(); 
         duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
     }
-
+    protoLove.resetSensorEntry(); 
+    
     duration = FIFO128_read(sensor_2.mPulseWidthFIFO); 
     while(duration != 0){
-        //TODO: Send data via WiFi
-        Serial.print("Sensor2: \t"); 
-        Serial.println(duration); 
+        saveDuration(SENSOR_2, duration); 
         duration = FIFO128_read(sensor_2.mPulseWidthFIFO); 
+        protoLove.incrementSensorEntry(); 
     }
+    protoLove.resetSensorEntry(); 
 
     duration = FIFO128_read(sensor_3.mPulseWidthFIFO); 
     while(duration != 0){
-        //TODO: Send data via WiFi
-        Serial.print("Sensor3: \t"); 
-        Serial.println(duration); 
+        saveDuration(SENSOR_3, duration); 
+        protoLove.incrementSensorEntry(); 
         duration = FIFO128_read(sensor_3.mPulseWidthFIFO); 
     }
-}
+    protoLove.resetSensorEntry(); 
+
+    protoLove.encode_send_Proto();     
+} 
