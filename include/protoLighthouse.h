@@ -7,7 +7,7 @@ typedef struct _PROTO_LOVE{
     int         (* const encode_send_Proto)(void);
     int         (* const decode_config_Proto)(void);
     int         (* const initProto)(void); 
-    int         (* const addSensor_Data)(const void * const); 
+    int         (* const addSensor_Data)(float, int); 
     int         (* const incrementSensorEntry)(void); 
     void        (* const resetSensorEntry)(void); 
 }PROTO_LOVE;

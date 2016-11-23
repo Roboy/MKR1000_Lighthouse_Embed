@@ -105,4 +105,5 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wirelessLove.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/board.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/sensors.h
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/sensors.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/fifo.h

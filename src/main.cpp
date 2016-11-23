@@ -15,8 +15,8 @@ extern "C" void __libc_init_array(void);
 
 static void initPeripherals()
 {
-    initCounter(); 
-    initSensors();   
+    sensorlove.initCounter(); 
+    sensorlove.initSensors();   
 
     if(ES_WIFI_SUCCESS != whylove.initWifi()){
         Serial.println("Error in initializing the WiFi!"); 
@@ -43,13 +43,13 @@ static void initPins_Interrupts(void)
     pinMode(12,INPUT); 
     pinMode(13,INPUT); 
 
-    attachInterrupt(8, rising_IRQ_S1, RISING); 
-    attachInterrupt(9, rising_IRQ_S2, RISING); 
-    attachInterrupt(5, rising_IRQ_S3, RISING); 
+    attachInterrupt(8, sensorlove.rising_IRQ_S1, RISING); 
+    attachInterrupt(9, sensorlove.rising_IRQ_S2, RISING); 
+    attachInterrupt(5, sensorlove.rising_IRQ_S3, RISING); 
 
-    attachInterrupt(0, falling_IRQ_S1, FALLING); 
-    attachInterrupt(1, falling_IRQ_S2, FALLING); 
-    attachInterrupt(2, falling_IRQ_S3, FALLING); 
+    attachInterrupt(0, sensorlove.falling_IRQ_S1, FALLING); 
+    attachInterrupt(1, sensorlove.falling_IRQ_S2, FALLING); 
+    attachInterrupt(2, sensorlove.falling_IRQ_S3, FALLING); 
 }
 
 // TODO: Add Logging System to the project
@@ -71,8 +71,7 @@ int main( void )
     for (;;)
     {
         //whylove.printWifiStatus(); 
-        delay(10); 
-        processSensorValues(); 
+        sensorlove.processSensorValues(); 
     }
 
     return 0;

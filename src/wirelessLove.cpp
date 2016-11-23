@@ -169,9 +169,6 @@ static int sendUDPTestPacket(void)
 
 static int sendUDPPacket(const uint8_t * buffer, size_t size)
 {
-    Serial.print("WIRELESSLOVE: BufferSize of the encoded protobuffer: "); 
-    Serial.println(size); 
-    Serial.println("WIRELESSLOVE: Trying to send encoded protobuffer"); 
     UDP_sensors.beginPacket(remoteIP, sensorPort_t); 
     if(size != UDP_sensors.write(buffer, size)){
         Serial.println("Size of the UDP Package to big! Truncated overlapping data"); 

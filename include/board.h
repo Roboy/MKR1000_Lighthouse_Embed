@@ -13,6 +13,12 @@ typedef enum _SENSORTYPE{
     SENSOR_3 = 3, 
 }SENSORTYPE; 
 
+typedef enum SWEEPTYPE{
+    NONE = 0, 
+    VERTICAL = 1,
+    HORIZONTAL = 2,
+    }SWEEPTYPE; 
+
 typedef enum _ES{
     ES_WIFI_FAIL_INIT_NO_SHIELD = 1,
     ES_WIFI_FAIL_INIT_CANNOT_CONNECT,
