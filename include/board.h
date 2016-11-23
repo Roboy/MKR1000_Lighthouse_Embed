@@ -5,6 +5,7 @@
 #include "wirelessLove.h"
 #include "protoLighthouse.h"
 #include "sensors.h"
+#include "fifo.h"
 
 typedef enum _SENSORTYPE{
     SENSOR_1 = 1,

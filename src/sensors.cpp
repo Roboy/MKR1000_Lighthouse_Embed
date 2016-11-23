@@ -1,10 +1,11 @@
 #include "sensors.h"
+#include "lighthouse_sensor.pb.h"
 
 volatile static Sensor sensor_1; 
 volatile static Sensor sensor_2; 
 volatile static Sensor sensor_3; 
 
-SensorData sensordata;
+mkr1000_lighthouse_trackedObject_Sensor sensordata;
 
 void rising_IRQ_S1(void)
 {
@@ -47,12 +48,9 @@ void initSensors()
     FIFO_init(sensor_3.mPulseWidthFIFO); 
 }
 
-/*
- *  (GCLK_SOURCE / GCLK_DIVIDE) / (PRESCALER + REGISTER COUNTS) = OVERFLOW FREQUENCE OF TCX
+ /*  (GCLK_SOURCE / GCLK_DIVIDE) / (PRESCALER + REGISTER COUNTS) = OVERFLOW FREQUENCE OF TCX
  *  (48Mhz / GCLK_DIVID) / PRESCALER + 2^16) = 2^16µS means
- *  Currenlty setted up to 1MHZ which equals count stamps of 1µS
- *
- * */
+ *  Currenlty setted up to 1MHZ which equals count stamps of 1µS */
 void initCounter()
 {
     // divides the source frequence of the GLCK with the provided divide value
@@ -87,19 +85,19 @@ static void decodeDuration(uint16_t duration)
     // which baseStation did emitted the sweep?
     if( 60 < duration && 100 > duration)
     {
-        sensordata.sensor1 = false; 
-        sensordata.sensor0 = true; 
-        sensordata.angel0_h = duration; 
-        sensordata.angel0_v = duration; 
+        sensordata.sensors1[0]  = false; 
+        sensordata.sensors0[0]  = true; 
+        sensordata.angles0_h[0] = duration; 
+        sensordata.angles0_v[0] = duration; 
    
     }
 
     else if( 100 < duration && 140 > duration)
     {
-        sensordata.sensor1 = true; 
-        sensordata.sensor0 = false; 
-        sensordata.angel1_h = duration; 
-        sensordata.angel1_v = duration; 
+        sensordata.sensors1[0] = true; 
+        sensordata.sensors0[0] = false; 
+        sensordata.angles1_h[0] = duration; 
+        sensordata.angles1_v[0] = duration; 
 
     }
     //TODO
@@ -110,10 +108,8 @@ static void decodeDuration(uint16_t duration)
 
 static void saveDuration(SENSORTYPE sensor, uint16_t duration)
 {
-    Serial.println("Sensor1: decode Duration"); 
-    // fill with data
-    sensordata.id = (int32_t) sensor; 
-    sensordata.timestamp = 0; 
+    sensordata.id= (int32_t) sensor; 
+    sensordata.timestamp[0]= 0; 
     decodeDuration(duration); 
     
     // adds the decoded Sensor Data to the respective Sensor ProtoBuffer in the TrackedObject protob
@@ -126,7 +122,6 @@ void processSensorValues(void)
 
     duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
     while(duration != 0){
-        Serial.println("Sensor1: duration not zero"); 
         saveDuration(SENSOR_1, duration);
         protoLove.incrementSensorEntry(); 
         duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
@@ -151,3 +146,5 @@ void processSensorValues(void)
 
     protoLove.encode_send_Proto();     
 } 
+
+SENSOR_LOVE const sensorlove = {rising_IRQ_S1, rising_IRQ_S2, rising_IRQ_S3, falling_IRQ_S1, falling_IRQ_S2, falling_IRQ_S3, initSensors, initCounter, decodeDuration, processSensorValues}; 
