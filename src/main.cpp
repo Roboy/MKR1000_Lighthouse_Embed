@@ -52,7 +52,7 @@ static void initPins_Interrupts(void)
     attachInterrupt(2, sensorlove.falling_IRQ_S3, FALLING); 
 }
 
-// TODO: Add Logging System to the project
+// TODO: Improve logging system
 int main( void )
 {
     init();
@@ -70,9 +70,11 @@ int main( void )
     
     for (;;)
     {
+        delay(1000); 
+        LOG(logWARNING, "WARNING"); 
+        LOG(logINFO, "INFO"); 
         //whylove.printWifiStatus(); 
         sensorlove.processSensorValues(); 
     }
-
     return 0;
 }

@@ -7,10 +7,13 @@
 
 bool                                        status; 
 size_t                                      msg_len; 
-static uint32_t                             DataEntrySensor; 
+static uint32_t                             DataEntryHorizontal; 
+static uint32_t                             DataEntryVertical; 
 mkr1000_lighthouse_trackedObject            trackedObjMsg; 
 mkr1000_lighthouse_trackedObject_Sensor     trackedSensor; 
 mkr1000_lighthouse_configObject             configObjMsg; 
+
+static int incrementSensorEntry(int sweeptype); 
 
 static int encode_send_Proto()
 {
@@ -73,44 +76,55 @@ static int initProto()
 
 static int addSensor_Data(float angle, int sweeptype)
 {
+    Serial.print("add Sensor called"); 
     uint8_t res = ES_PROTO_ERROR, id = 0;
     trackedObjMsg.s_count = 1; 
     if(sweeptype == HORIZONTAL)
     {
-        trackedObjMsg.s[id].angles_h[DataEntrySensor] = angle;
+        trackedObjMsg.s[id].angles_h[DataEntryHorizontal] = angle;
         trackedObjMsg.s[id].angles_h_count++;
     }
 
     if(sweeptype == VERTICAL)
     {
-        trackedObjMsg.s[id].angles_v[DataEntrySensor] = angle;
+        trackedObjMsg.s[id].angles_v[DataEntryVertical] = angle;
         trackedObjMsg.s[id].angles_v_count++;
     }
+
+    incrementSensorEntry(sweeptype); 
 
     res = ES_PROTO_SUCCESS; 
     return res; 
 }
 
-static int incrementSensorEntry()
+static void resetSensorEntry()
+{
+    LOG(logVERBOSE, "reset Sensor Entries"); 
+    DataEntryHorizontal = 0; 
+    DataEntryVertical = 0; 
+}
+
+static int incrementSensorEntry( int sweeptype )
 {
     uint8_t res = ES_PROTO_ERROR; 
-    if(DataEntrySensor == 20){
-        Serial.println("Max number of Sensor Data Entries received!");
+    if(DataEntryHorizontal == 15 && DataEntryVertical == 15)
+    {
+        LOG(logVERBOSE, "reached limit Sensor Entries"); 
+        resetSensorEntry(); 
+        encode_send_Proto();     
     }else{
-        DataEntrySensor++;
-        res = ES_PROTO_SUCCESS; 
+        LOG(logVERBOSE, "incrementSensor Entry"); 
+        if(sweeptype == HORIZONTAL)
+        {
+            DataEntryVertical++; 
+        }
+        if(sweeptype == VERTICAL)
+        {
+            DataEntryHorizontal++;
+        }
     }
     return res; 
 }
 
-static void resetSensorEntry()
-{
-    DataEntrySensor = 0; 
-}
 
-static uint32_t getSenstorEntry()
-{
-    return DataEntrySensor; 
-}
-
-PROTO_LOVE const protoLove = { encode_send_Proto, decode_config_Proto, initProto, addSensor_Data, incrementSensorEntry, resetSensorEntry}; 
+PROTO_LOVE const protoLove = { encode_send_Proto, decode_config_Proto, initProto, addSensor_Data, resetSensorEntry}; 

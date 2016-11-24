@@ -155,12 +155,8 @@ void processSensorValues(void)
     uint16_t duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
     while( 0 != duration){
         processDuration();
-        protoLove.incrementSensorEntry(); 
         duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
     }
-    protoLove.resetSensorEntry(); 
-
-    protoLove.encode_send_Proto();     
 } 
 
 SENSOR_LOVE const sensorlove = {rising_IRQ_S1, rising_IRQ_S2, rising_IRQ_S3, falling_IRQ_S1, falling_IRQ_S2, falling_IRQ_S3, initSensors, initCounter, processSensorValues}; 

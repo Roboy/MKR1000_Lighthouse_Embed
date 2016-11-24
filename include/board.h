@@ -6,6 +6,7 @@
 #include "protoLighthouse.h"
 #include "sensors.h"
 #include "fifo.h"
+#include "logging.h"
 
 typedef enum _SENSORTYPE{
     SENSOR_1 = 1,
@@ -17,7 +18,7 @@ typedef enum SWEEPTYPE{
     NONE = 0, 
     VERTICAL = 1,
     HORIZONTAL = 2,
-    }SWEEPTYPE; 
+}SWEEPTYPE; 
 
 typedef enum _ES{
     ES_WIFI_FAIL_INIT_NO_SHIELD = 1,
