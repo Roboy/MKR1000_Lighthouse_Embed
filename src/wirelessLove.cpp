@@ -15,7 +15,7 @@ static int getConnectionStatus(void);
 
 /************************ VARIABLES ***************************************/
 static int      LoveStatus = WL_IDLE_STATUS;
-static char     ssid[]="roboy"; 
+static char     ssid[]="1-UTUM-GUES"; 
 static char     pass[] = "inroboywiitrust"; 
 static bool     timeout = false; 
 
@@ -127,7 +127,8 @@ static int initWifi(void)
     }
 
     // wait max 10 seconds to connect to the provided Wifi
-    while(WiFi.begin(ssid, pass) != WL_CONNECTED && !timeout){
+    //while(WiFi.begin(ssid, pass) != WL_CONNECTED && !timeout){
+    while(WiFi.begin(ssid) != WL_CONNECTED && !timeout){
         delay(1000); 
         timoutCounter++; 
         if(timoutCounter == 10){
