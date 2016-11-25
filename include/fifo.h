@@ -3,9 +3,17 @@
 
 #include "board.h"
 
-/**
- * see mikrocontroller forum tutorial 
- * */
+typedef struct Sweep{
+    uint16_t        sweepDuration; 
+    bool            vertical; 
+}Sweep; 
+
+typedef struct _FIFO128sweep{
+    uint8_t     mRead;
+    uint8_t     mWrite;
+    Sweep *      mBuffer[128]; 
+}FIFO128sweep; 
+
 typedef struct _FIFO128t{
     uint8_t     mRead;
     uint8_t     mWrite;

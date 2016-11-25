@@ -62,7 +62,7 @@ SIZE=$(ARM_GCC_PATH)size
 
 LNK_SCRIPT = $(MODULE_PATH)/MKRLib/variants/mkr1000/linker_scripts/gcc/flash_with_bootloader.ld
 CFLAGS_EXTRA= -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"' -DPB_NO_STATIC_ASSERT
-CFLAGS=-mthumb -mcpu=cortex-m0plus -Wall -Wextra -c -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500 
+CFLAGS=-mthumb -mcpu=cortex-m0plus -Wall -Wextra -c -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500 -Wno-write-strings 
 
 CXXFLAGS_EXTRA= -DF_CPU=48000000L -DARDUINO=10612 -DARDUINO_SAMD_MKR1000 -DARDUINO_ARCH_SAMD  -D__SAMD21G18A__ -DUSB_VID=0x2341 -DUSB_PID=0x824e -DUSBCON '-DUSB_MANUFACTURER="Arduino LLC"' '-DUSB_PRODUCT="Genuino MKR1000"'
 CXXFLAGS=-mthumb -mcpu=cortex-m0plus -Wall -Wextra -std=gnu++11 -c -fno-threadsafe-statics -fno-rtti -fno-exceptions -ffunction-sections -fdata-sections -MMD -nostdlib -nostartfiles --param max-inline-insns-single=500 

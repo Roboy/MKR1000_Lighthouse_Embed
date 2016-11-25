@@ -105,6 +105,7 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/samd21_host.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wirelessLove.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
- /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/sensors.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/fifo.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/sensors.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/logging.h

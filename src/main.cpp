@@ -52,7 +52,16 @@ static void initPins_Interrupts(void)
     attachInterrupt(2, sensorlove.falling_IRQ_S3, FALLING); 
 }
 
-// TODO: Improve logging system
+// TODO: Improve logging system:
+// #1 get real time clock function 
+// #2 get Logginglevel from enum 
+// #3 Communication via UDP 
+// #4 BitMask to enable granularity logging
+// #5 GetLogString function for integers 
+
+// TODO:
+//
+//
 int main( void )
 {
     init();
@@ -70,9 +79,6 @@ int main( void )
     
     for (;;)
     {
-        delay(1000); 
-        LOG(logWARNING, "WARNING"); 
-        LOG(logINFO, "INFO"); 
         //whylove.printWifiStatus(); 
         sensorlove.processSensorValues(); 
     }

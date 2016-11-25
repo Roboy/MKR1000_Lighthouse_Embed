@@ -2,11 +2,15 @@
 #define BOARD_H
 
 #include "Arduino.h"
+
+extern "C" {
 #include "wirelessLove.h"
 #include "protoLighthouse.h"
-#include "sensors.h"
 #include "fifo.h"
+#include "sensors.h"
 #include "logging.h"
+}
+
 
 typedef enum _SENSORTYPE{
     SENSOR_1 = 1,

@@ -7,8 +7,10 @@ volatile static Sensor sensor_1;
 volatile static Sensor sensor_2; 
 volatile static Sensor sensor_3; 
 
-volatile static sweepTime   sweepT;                           // Lighthouse Base Station A
-volatile static bool        publishSensorData;  
+volatile static uint16_t    s1_sweep_start, s1_sweep_stop; 
+volatile static bool        s1_sweep_active; 
+volatile static bool        s1_synced = false; 
+volatile static Sweep       s1_sweep;  
 
 void rising_IRQ_S1(void)
 {
@@ -31,45 +33,60 @@ void falling_IRQ_S1(void)
     uint16_t duration = (sensor_1.mStopT - sensor_1.mStartT); 
 
     // sync pulse detected! Get duration and start sweep-counting measurment 
-    if( 50 < duration && 0 < duration )
+    if( duration > 50 )
     {
         // check if the sync pulse signals skip or not
-        if((60 < duration && 65 > duration)
-                || ( 80 < duration && 86 > duration))
+        if((60 < duration && 70 > duration)
+                || ( 81 < duration && 90 > duration))
         {
-            FIFO128_write(sensor_1.mVerticalFIFO, 0); 
-            FIFO128_write(sensor_1.mPulseWidthFIFO, duration); 
-            sweepT.startC = sensor_1.mStartT; 
-            sweepT.active = true; 
+            LOG_d(logINFO, "Vertical sweep detected: ", duration); 
 
-        }else if(( 70 < duration && 78 > duration)
-                || ( 90 < duration && 97 > duration))
+            s1_sweep.vertical = true; 
+
+            s1_synced = true; 
+            s1_sweep_active = true; 
+            s1_sweep_start = sensor_1.mStartT; 
+
+        }else if(s1_synced == false){
+            LOG(logINFO, "skiped pulse to sync"); 
+        }else if(( 71 < duration && 80 > duration)
+                || ( 91 < duration && 100 > duration))
         {
-            FIFO128_write(sensor_1.mVerticalFIFO, 1); 
-            FIFO128_write(sensor_1.mPulseWidthFIFO, duration); 
-            sweepT.startC = sensor_1.mStartT; 
-            sweepT.active = true; 
+            LOG_d(logINFO, "Horizontal sweep detected", duration); 
+
+            s1_sweep.vertical = false; 
+
+            s1_sweep_active = true; 
+            s1_sweep_start = sensor_1.mStartT; 
         } 
     }
     // laser sweep detected! Complete sweep-counting measurement 
-    else if(true == sweepT.active)
+    else if(true == s1_sweep_active && duration < 50)
     {
-        uint16_t sweepT_final=  sensor_1.mStartT - sweepT.startC; 
-        sweepT.active = false; 
-        FIFO128_write(sensor_1.mSweepCountFIFO, sweepT_final);  
+        LOG_d(logDEBUG, "Laser sweep detected", duration); 
+        s1_sweep_active = false; 
+        s1_sweep.sweepDuration = sensor_1.mStartT - s1_sweep_start ; 
+
+        Sweep * sweepWrite = static_cast<Sweep*>(malloc( sizeof(Sweep))); 
+        if(sweepWrite != NULL){
+            sweepWrite->sweepDuration   = s1_sweep.sweepDuration; 
+            sweepWrite->vertical        = s1_sweep.vertical; 
+        }
+            
+        FIFO128_write(sensor_1.mSweepFIFO, sweepWrite);  
     }
 }
 
 void falling_IRQ_S2(void)
 {
     sensor_2.mStopT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
-    FIFO128_write(sensor_2.mPulseWidthFIFO, (sensor_2.mStopT - sensor_2.mStartT)); 
+    //FIFO128_write(sensor_2.mPulseWidthFIFO, (sensor_2.mStopT - sensor_2.mStartT)); 
 }
 
 void falling_IRQ_S3(void)
 {
     sensor_3.mStopT = (uint16_t) (TC4->COUNT16.COUNT.reg); 
-    FIFO128_write(sensor_3.mPulseWidthFIFO, (sensor_3.mStopT - sensor_3.mStartT)); 
+    //FIFO128_write(sensor_3.mPulseWidthFIFO, (sensor_3.mStopT - sensor_3.mStartT)); 
 }
 
 void initSensors()
@@ -79,17 +96,10 @@ void initSensors()
     sensor_3.id = 3; 
 
     // init the FIFO Buffers
-    FIFO_init(sensor_1.mSweepCountFIFO); 
-    FIFO_init(sensor_2.mSweepCountFIFO); 
-    FIFO_init(sensor_3.mSweepCountFIFO); 
-
-    FIFO_init(sensor_1.mVerticalFIFO); 
-    FIFO_init(sensor_2.mVerticalFIFO); 
-    FIFO_init(sensor_3.mVerticalFIFO); 
-
-    FIFO_init(sensor_1.mPulseWidthFIFO); 
-    FIFO_init(sensor_2.mPulseWidthFIFO); 
-    FIFO_init(sensor_3.mPulseWidthFIFO); 
+    FIFO_init(sensor_1.mSweepFIFO); 
+    FIFO_init(sensor_2.mSweepFIFO); 
+    FIFO_init(sensor_3.mSweepFIFO); 
+    enableLogging = false; 
 }
 
  /*  (GCLK_SOURCE / GCLK_DIVIDE) / (PRESCALER + REGISTER COUNTS) = OVERFLOW FREQUENCE OF TCX
@@ -125,25 +135,25 @@ void initCounter()
 // decode the detected Duration according to:
 // https://github.com/nairol/LighthouseRedox/blob/master/docs/Light%20Emissions.md
 
-static void processDuration()
+static void processDuration(Sweep * detectedSweep)
 {
+    LOG(logVERBOSE_3, "process Sensor Values"); 
     uint8_t     res;
-    uint16_t    sweepT      = FIFO128_read(sensor_1.mSweepCountFIFO); 
-    uint16_t    vertical    = FIFO128_read(sensor_1.mVerticalFIFO); 
 
     uint8_t sweeptype = NONE ; 
     float angle = 0; 
 
     // decode the sync pulse length based on the reverse engineered protocol from https://github.com/nairol/LighthouseRedox/blob/master/docs/Light%20Emissions.md
-    if(1 == vertical)
+    if(0 == detectedSweep->vertical)
     {
         sweeptype = VERTICAL; 
-        angle = sweepT * MU_PER_DEGREE; 
-
+        angle = detectedSweep->sweepDuration * MU_PER_DEGREE; 
+        LOG_f(logDEBUG,"Vertical Sweep detected", angle); 
     }else 
     {
         sweeptype = HORIZONTAL; 
-        angle = sweepT * MU_PER_DEGREE; 
+        angle = detectedSweep->sweepDuration * MU_PER_DEGREE; 
+        LOG_f(logDEBUG, "Horizontal sweep detected", angle); 
     }    
 
     // adds the decoded Sensor Data to the respective Sensor ProtoBuffer in the TrackedObject protob
@@ -152,11 +162,16 @@ static void processDuration()
 
 void processSensorValues(void)
 {
-    uint16_t duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
-    while( 0 != duration){
-        processDuration();
-        duration = FIFO128_read(sensor_1.mPulseWidthFIFO); 
+    LOG(logDEBUG, "processing"); 
+    LOG_d(logDEBUG, "process Sensor Values", 5); 
+    Sweep * detectedSweep = FIFO128_read(sensor_1.mSweepFIFO); 
+    while( NULL != detectedSweep){
+        processDuration(detectedSweep);
+        free(detectedSweep); 
+        detectedSweep = FIFO128_read(sensor_1.mSweepFIFO); 
     }
+    //protoLove.resetSensorEntry(); 
+    //protoLove.encode_send_Proto(); 
 } 
 
 SENSOR_LOVE const sensorlove = {rising_IRQ_S1, rising_IRQ_S2, rising_IRQ_S3, falling_IRQ_S1, falling_IRQ_S2, falling_IRQ_S3, initSensors, initCounter, processSensorValues}; 

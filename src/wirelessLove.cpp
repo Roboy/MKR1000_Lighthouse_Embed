@@ -21,9 +21,10 @@ static bool     timeout = false;
 
 static uint16_t  sensorPort_l= 2390; 
 static uint16_t  commandPort_l = 2391; 
+static uint16_t  logginPort_l = 2392; 
 
-static uint16_t  commandPort_t = 8000; 
 static uint16_t  sensorPort_t = 8000; 
+static uint16_t  logginPort_t = 8001; 
 
 static const char  remoteIP[] = "10.25.12.189"; 
 static const char  TestBuffer[]="Hello World"; 
@@ -31,6 +32,7 @@ static const char  TestBuffer[]="Hello World";
 
 static WiFiUDP  UDP_sensors; 
 static WiFiUDP  UDP_commands; 
+static WiFiUDP  UDP_loggin; 
 
 
 static int printMacAddress(void)
@@ -152,8 +154,12 @@ static int initUDPSockets(void)
        return (int) ES_WIFI_FAIL_UDP_SOCKET; 
     }
 
-    if (0 == UDP_sensors.begin(commandPort_l)){
+    if (0 == UDP_loggin.begin(logginPort_l)){
        return (int) ES_WIFI_FAIL_UDP_SOCKET; 
+    }
+
+    if (0 == UDP_commands.begin(commandPort_l)){
+        return (int) ES_WIFI_FAIL_UDP_SOCKET;
     }
 
     return (int) ES_WIFI_SUCCESS; 
@@ -178,11 +184,22 @@ static int sendUDPPacket(const uint8_t * buffer, size_t size)
     return (int) ES_WIFI_SUCCESS; 
 }
 
-static int receiveUDPPacket(const uint8_t *buffer, size_t size)
-{
-    (void) buffer; 
-    (void) size; 
-    return (int) ES_WIFI_SUCCESS; 
+static int receiveUDPPacket(const uint8_t *buffer, size_t size){
+    uint8_t res = ES_WIFI_SUCCESS; 
+    int packetSize = UDP_commands.parsePacket(); 
+    if(packetSize >0){
+        uint8_t packetBuffer[255] = {0}; 
+        LOG_d(logINFO, "Packet available at the command UDP Socket. Size: ", packetSize); 
+        uint32_t remoteIP = UDP_commands.remoteIP();  
+        LOG_d(logINFO, "Remote IP : ", remoteIP); 
+        uint16_t remotePort = UDP_commands.remotePort(); 
+        LOG_d(logINFO, "Remote Port : ", remotePort); 
+        size_t len = UDP_commands.read(packetBuffer, 255); 
+        protoLove.decode_config_Proto(packetBuffer, len); 
+    }
+
+    return res; 
 }
+
 
 WIFI_LOVE const whylove = {printMacAddress, printEncryptionType, printAvailableNetworks, printWifiStatus, initWifi, initUDPSockets , sendUDPTestPacket, sendUDPPacket, receiveUDPPacket, getConnectionStatus}; 

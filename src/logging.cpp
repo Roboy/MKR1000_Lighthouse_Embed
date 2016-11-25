@@ -1,7 +1,11 @@
 #include "logging.h"
 
+static const char * LEVEL_STRING[] = {
+    FOREACH_LEVEL(GENERATE_STRING)
+}; 
+
 static LogString * logString; 
-static TLogLevel currentLoglevel = logVERBOSE; 
+static TLogLevel currentLoglevel = logDEBUG; 
 
 static void printWiFiUDP()
 {
@@ -12,6 +16,11 @@ static void printWiFiUDP()
 static void printSerial()
 {
     Serial.println(logString->buff); 
+}
+
+static void setLoggingLevel(TLogLevel newLevel)
+{
+    currentLoglevel = newLevel; 
 }
 
 static void setFlushInterface(FlushInterface in)
@@ -26,7 +35,7 @@ static void setFlushInterface(FlushInterface in)
     }
 }
 
-LogString * createLogString(char * input, TLogLevel level)
+static LogString * createLogString(char * input, TLogLevel level)
 {
     LogString * thisLog; 
     thisLog = static_cast<LogString*>(malloc( sizeof *thisLog ));
@@ -55,7 +64,7 @@ static void deleteLogString()
     logString = NULL; 
 }
 
-static void appendLogString(char * const append)
+static void appendLogString(const char * const append)
 {
     char baseString[logString->length + 1];
     strncpy(baseString, logString->buff, logString->length +1);  
@@ -74,24 +83,96 @@ static TLogLevel GetReportingLevel(void)
     return currentLoglevel; 
 }
 
-static void GetLogString(TLogLevel level, char * msg)
+static void GetLogString(TLogLevel level, const char * msg)
 {
-    uint32_t currentTime = millis();
     char time[20];
-    snprintf(time, 20, "%ld", currentTime); 
-    char levelInText[]  = "\tLOG_VERBOSE\t"; 
+    snprintf(time, 20, "%ld", micros()); 
+
     char logMessage [strlen(msg)+1]; 
     strncpy(logMessage, msg, strlen(msg)+1); 
-    //TODO: Add real functions to retrieve the logLevelText and the RealTime
 
     logString = createLogString(time, logDEBUG); 
-    appendLogString(levelInText); 
+    appendLogString("\t"); 
+    appendLogString(LEVEL_STRING[level]); 
+    appendLogString("\t"); 
     appendLogString(logMessage); 
+    appendLogString("\t"); 
+
     setFlushInterface(F_SERIAL); 
     logString->flushI(); 
     deleteLogString(); 
 }
 
+static void MakeldLogString(TLogLevel level, const char * msg, long int number)
+{
+    char time[20];
+    snprintf(time, 20, "%ld", micros()); 
 
+    char logMessage [strlen(msg)+1]; 
+    strncpy(logMessage, msg, strlen(msg)+1); 
 
-LogI const logi = {GetLogString, GetReportingLevel, setFlushInterface}; 
+    char logNumber [20]; 
+    snprintf(logNumber, 20, "%ld", number); 
+
+    logString = createLogString(time, logDEBUG); 
+    appendLogString("\t"); 
+    appendLogString(LEVEL_STRING[level]); 
+    appendLogString("\t"); 
+    appendLogString(logMessage); 
+    appendLogString("\t"); 
+    appendLogString(logNumber); 
+
+    setFlushInterface(F_SERIAL); 
+    logString->flushI(); 
+    deleteLogString(); 
+}
+
+static void MakedLogString(TLogLevel level,  const char * msg, int number)
+{
+    char time[20];
+    snprintf(time, 20, "%ld", micros()); 
+
+    char logMessage [strlen(msg)+1]; 
+    strncpy(logMessage, msg, strlen(msg)+1); 
+
+    char logNumber [20]; 
+    snprintf(logNumber, 20, "%d", number); 
+
+    logString = createLogString(time, logDEBUG); 
+    appendLogString("\t"); 
+    appendLogString(LEVEL_STRING[level]); 
+    appendLogString("\t"); 
+    appendLogString(logMessage); 
+    appendLogString("\t"); 
+    appendLogString(logNumber); 
+
+    setFlushInterface(F_SERIAL); 
+    logString->flushI(); 
+    deleteLogString(); 
+}
+
+static void MakefLogString(TLogLevel level, const char * msg, float number)
+{
+    char time[20];
+    snprintf(time, 20, "%ld", micros()); 
+
+    char logMessage [strlen(msg)+1]; 
+    strncpy(logMessage, msg, strlen(msg)+1); 
+
+    char logNumber [20]; 
+    snprintf(logNumber, 20, "%f", number); 
+
+    logString = createLogString(time, logDEBUG); 
+    appendLogString("\t"); 
+    appendLogString(LEVEL_STRING[level]); 
+    appendLogString("\t"); 
+    appendLogString(logMessage); 
+    appendLogString("\t"); 
+    appendLogString(logNumber); 
+
+    setFlushInterface(F_SERIAL); 
+    logString->flushI(); 
+    deleteLogString(); 
+}
+
+LogI const logi = {GetLogString, MakefLogString, MakeldLogString, MakedLogString, GetReportingLevel, setFlushInterface, setLoggingLevel }; 
