@@ -36,20 +36,21 @@ static void initPeripherals()
 
 static void initPins_Interrupts(void)
 {
+    pinMode(6,INPUT); 
     pinMode(8,INPUT); 
     pinMode(9,INPUT); 
-    pinMode(10,INPUT); 
-    pinMode(11,INPUT); 
-    pinMode(12,INPUT); 
-    pinMode(13,INPUT); 
 
+    pinMode(1,INPUT); 
+    pinMode(0,INPUT); 
+    pinMode(3,INPUT); 
+
+    //attachInterrupt(6, sensorlove.rising_IRQ_S3, RISING); 
     attachInterrupt(8, sensorlove.rising_IRQ_S1, RISING); 
     attachInterrupt(9, sensorlove.rising_IRQ_S2, RISING); 
-    attachInterrupt(5, sensorlove.rising_IRQ_S3, RISING); 
 
     attachInterrupt(0, sensorlove.falling_IRQ_S1, FALLING); 
     attachInterrupt(1, sensorlove.falling_IRQ_S2, FALLING); 
-    attachInterrupt(2, sensorlove.falling_IRQ_S3, FALLING); 
+    //attachInterrupt(3, sensorlove.falling_IRQ_S3, FALLING); 
 }
 
 // TODO: Improve logging system:

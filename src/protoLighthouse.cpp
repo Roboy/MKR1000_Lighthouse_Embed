@@ -6,92 +6,123 @@
 
 bool                                        status; 
 size_t                                      msg_len; 
-static uint32_t                             DataEntry; 
-static uint32_t                             IndexVertical; 
-static uint32_t                             IndexHorizontal; 
 
-mkr1000_lighthouse_trackedObject            trackedObjMsg; 
-mkr1000_lighthouse_trackedObject_Sensor     trackedSensor; 
+static uint32_t                             DataEntry_s1 = 0; 
+static uint32_t                             DataEntry_s2 = 0; 
+
+static uint32_t                             s1_IndexVertical = 0; 
+static uint32_t                             s1_IndexHorizontal = 0; 
+static uint32_t                             s2_IndexHorizontal = 0; 
+static uint32_t                             s2_IndexVertical = 0; 
+
+mkr1000_lighthouse_sensor                   trackedSensor[3]; 
 mkr1000_lighthouse_configObject             configObjMsg; 
 
-static int encode_send_Proto();
-
+static int encode_send_Proto(uint16_t id);
 
 static int initProto()
 {
     uint8_t res = ES_PROTO_ERROR;
-    // currently contains 3 sensors
-    trackedObjMsg = mkr1000_lighthouse_trackedObject_init_zero; 
+
+    for(int i = 0; i < 3; i++){
+        trackedSensor[i] = mkr1000_lighthouse_sensor_init_zero;
+    }
     configObjMsg = mkr1000_lighthouse_configObject_init_zero; 
     res = ES_PROTO_SUCCESS;
+    enableLogging = true;
     return res; 
 }    
 
-static void resetSensorEntry()
+static void resetSensorEntry(uint16_t id)
 {
-    LOG(logVERBOSE_3, "reset Sensor Entries"); 
-    IndexVertical = 0; 
-    IndexHorizontal = 0; 
-    DataEntry = 0; 
-}
-
-static void incrementSensorEntry( )
-{
-    DataEntry++;
-    LOG_d(logDEBUG, "incrementSensor Entry", DataEntry);  
-    if(DataEntry == 4)
-    {
-        LOG(logDEBUG, "reached limit Sensor Entries "); 
-        encode_send_Proto(); 
-        resetSensorEntry(); 
+    LOG_d(logINFO, "reset Senor entries of ID: ", id); 
+    if(id == 0){
+        s1_IndexVertical = 0; 
+        s1_IndexHorizontal = 0; 
+        DataEntry_s1 = 0; 
+    }else if(id == 1){
+        s2_IndexVertical = 0;
+        s2_IndexHorizontal = 0; 
+        DataEntry_s2 = 0; 
     }
 }
 
-static int addSensor_Data(float angle, int sweeptype)
+static void incrementSensorEntry(uint16_t id)
 {
-    LOG(logDEBUG, "Add Sensor Data called"); 
-    uint8_t res = ES_PROTO_ERROR, id = 0;
-    trackedObjMsg.s_count = 1; 
+    uint32_t * DataEntry; 
+
+    if(id == 0){
+        DataEntry = &DataEntry_s1; 
+    }else if(id == 1)
+    {
+        DataEntry = &DataEntry_s2; 
+    }
+    
+    (*DataEntry)++;
+    LOG_d(logVERBOSE_3, "incrementSensor Entry", *DataEntry);  
+    if((*DataEntry) == 10)
+    {
+        LOG_d(logINFO, "reached limit Sensor Entries ID: ", id); 
+        encode_send_Proto(id); 
+        resetSensorEntry(id); 
+    }
+}
+
+static int addSensor_Data(float angle, int sweeptype, uint16_t id)
+{
+    uint8_t res = ES_PROTO_ERROR;
+    uint32_t * index_h = NULL; 
+    uint32_t * index_v = NULL; 
+    LOG_d(logDEBUG, "Add Sensor Data called. ID: ", id); 
+
+    if(id == 0){
+        index_h = &s1_IndexHorizontal; 
+        index_v = &s1_IndexVertical; 
+        
+    }else if(id == 1){
+        index_h = &s2_IndexHorizontal; 
+        index_v = &s2_IndexVertical; 
+    }
+
     if(sweeptype == HORIZONTAL)
     {
-        trackedObjMsg.s[id].angles_h[IndexHorizontal] = angle;
-        trackedObjMsg.s[id].angles_h_count++;
+        trackedSensor[id].angles_h[(*index_h)] = angle;
+        trackedSensor[id].angles_h_count++;
 
-        LOG_d(logDEBUG, "HORIZONTAL sweep added at index: ", IndexHorizontal); 
-        IndexHorizontal++; 
+        LOG_d(logDEBUG, "HORIZONTAL sweep added at index: ", (*index_h)); 
+        (*index_h)++; 
     }
 
     if(sweeptype == VERTICAL)
     {
-        trackedObjMsg.s[id].angles_v[IndexVertical] = angle;
-        trackedObjMsg.s[id].angles_v_count++;
+        trackedSensor[id].angles_v[(*index_v)] = angle;
+        trackedSensor[id].angles_v_count++;
 
-        LOG_d(logDEBUG, "VERTICAL sweep added at index: ", IndexVertical); 
-        IndexVertical++;
+        LOG_d(logDEBUG, "VERTICAL sweep added at index: ", (*index_v)); 
+        (*index_v)++;
     }
-    incrementSensorEntry(); 
+
+    incrementSensorEntry(id); 
+
     res = ES_PROTO_SUCCESS; 
     return res; 
 }
 
-
 static int decode_trackedObj_Proto(size_t rcvd_msg_len, pb_byte_t * buffer)
 {
     LOG(logVERBOSE_3, "decoded tracked Object Message Proto"); 
-    mkr1000_lighthouse_trackedObject        rcvd_trackedObjMsg; 
+    mkr1000_lighthouse_sensor rcvd_trackedSensor; 
 
-    rcvd_trackedObjMsg = mkr1000_lighthouse_trackedObject_init_zero; 
-
+    rcvd_trackedSensor = mkr1000_lighthouse_sensor_init_zero; 
     pb_istream_t stream = pb_istream_from_buffer(buffer, rcvd_msg_len); 
-
-    status = pb_decode(&stream, mkr1000_lighthouse_trackedObject_fields, &rcvd_trackedObjMsg);  
+    status = pb_decode(&stream, mkr1000_lighthouse_sensor_fields, &rcvd_trackedSensor);  
 
     if(status){
-        LOG(logDEBUG, "decoded tracked Object Message Proto: "); 
-        LOG_d(logDEBUG, "Angles_v_count: ", rcvd_trackedObjMsg.s[0].angles_v_count); 
-        LOG_d(logDEBUG, "Angles_h_count: ", rcvd_trackedObjMsg.s[0].angles_h_count); 
+        LOG(logINFO, "decoded tracked Object Message Proto: "); 
+        LOG_d(logINFO, "Angles_v_count: ", rcvd_trackedSensor.angles_v_count); 
+        LOG_d(logINFO, "Angles_h_count: ", rcvd_trackedSensor.angles_h_count); 
     }else{
-        LOG(logDEBUG, "decoding failed"); 
+        LOG(logINFO, "decoding failed"); 
     }
 }
 
@@ -103,11 +134,11 @@ static int decode_config_Proto(const pb_byte_t * buffer, size_t rcvd_msg_len)
 
     pb_istream_t stream = pb_istream_from_buffer(buffer, rcvd_msg_len); 
 
-    status = pb_decode(&stream, mkr1000_lighthouse_trackedObject_fields, &rcvd_configObjMsg);  
+    status = pb_decode(&stream, mkr1000_lighthouse_trackedObjectConfig_fields, &rcvd_configObjMsg);  
 
     if(status){
         LOG(logDEBUG, "decoded Config Message Proto: "); 
-        LOG_d(logDEBUG, "received IP: ", rcvd_configObjMsg.id); 
+        LOG_d(logDEBUG, "received IP: ", rcvd_configObjMsg.ip); 
         LOG_d(logDEBUG, "received Port: ", rcvd_configObjMsg.port); 
     }else{
         LOG(logDEBUG, "decoding failed"); 
@@ -115,27 +146,32 @@ static int decode_config_Proto(const pb_byte_t * buffer, size_t rcvd_msg_len)
     return res; 
 }
 
-
-static int encode_send_Proto()
+static int encode_send_Proto(uint16_t id)
 {
     uint8_t res = ES_PROTO_ERROR; 
+    mkr1000_lighthouse_sensor trackedSensor_send = mkr1000_lighthouse_sensor_init_zero; 
+    LOG_d(logDEBUG, "Encode and Send Protobuffer from Sensor ID: ", id); 
 
-    if(trackedObjMsg.s[0].angles_h_count == 0 && trackedObjMsg.s[0].angles_v_count == 0)
+    if(trackedSensor[id].angles_h_count == 0 && trackedSensor[id].angles_v_count == 0)
     {
-        LOG(logVERBOSE_3, "Horizontal and Vertical angle count empty. Leave"); 
+        LOG_d(logVERBOSE_3, "Horizontal and Vertical angle count empty. Leave", id); 
         return res; 
     }
 
-    LOG(logVERBOSE, "#1 Encode proto #2 Send proto"); 
+    trackedSensor[id].id = id + 1; 
+    trackedSensor_send = trackedSensor[id]; 
+
     pb_byte_t buffer[512] = {0};
     pb_ostream_t stream = pb_ostream_from_buffer(buffer, sizeof(buffer)); 
    
-    status = pb_encode(&stream, mkr1000_lighthouse_trackedObject_fields, &trackedObjMsg); 
+    status = pb_encode(&stream, mkr1000_lighthouse_sensor_fields, &trackedSensor_send); 
     msg_len = stream.bytes_written; 
  
     if(!status)
     {
-        LOG(logVERBOSE, "Encoding failed!"); 
+        LOG(logERROR, "Encoding failed!"); 
+        LOG_d(logERROR, "angles h sensor 1: ", trackedSensor[id].angles_h_count); 
+        LOG_d(logERROR, "angles v sensor 1: ", trackedSensor[id].angles_v_count); 
         Serial.println(PB_GET_ERROR(&stream)); 
     }
 
@@ -150,16 +186,14 @@ static int encode_send_Proto()
     decode_trackedObj_Proto(msg_len, buffer); 
 
     // reset protobuffer entries
-    for(int i = 0; i < 20; ++i)
-    {
-        trackedObjMsg.s[0].angles_h[i]             = 0;
-        trackedObjMsg.s[0].angles_v[i]             = 0;
+    trackedSensor[id].angles_h_count = 0;
+    trackedSensor[id].angles_v_count = 0;
+    trackedSensor[id].timestamp_count = 0; 
+    for(int i = 0; i < 20; ++i){
+        trackedSensor[id].angles_h[i]             = 0;
+        trackedSensor[id].angles_v[i]             = 0;
     }
-    for(int i = 0; i < 3; ++i)
-    {
-        trackedObjMsg.s[i].angles_h_count = 0;
-        trackedObjMsg.s[i].angles_v_count = 0;
-    }
+    
     return res; 
 }
 
