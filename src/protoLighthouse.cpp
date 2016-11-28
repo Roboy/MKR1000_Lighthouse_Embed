@@ -29,7 +29,7 @@ static int initProto()
     }
     configObjMsg = mkr1000_lighthouse_configObject_init_zero; 
     res = ES_PROTO_SUCCESS;
-    enableLogging = true;
+    enableLogging = false;
     return res; 
 }    
 
@@ -68,7 +68,7 @@ static void incrementSensorEntry(uint16_t id)
     }
 }
 
-static int addSensor_Data(float angle, int sweeptype, uint16_t id)
+static int addSensor_Data(float angle, int sweeptype, uint16_t id, uint16_t lighthouse)
 {
     uint8_t res = ES_PROTO_ERROR;
     uint32_t * index_h = NULL; 
@@ -89,7 +89,11 @@ static int addSensor_Data(float angle, int sweeptype, uint16_t id)
         trackedSensor[id].angles_h[(*index_h)] = angle;
         trackedSensor[id].angles_h_count++;
 
+        trackedSensor[id].lighthouse[DataEntry_s2] = lighthouse;
+        trackedSensor[id].lighthouse_count++;
+
         LOG_d(logDEBUG, "HORIZONTAL sweep added at index: ", (*index_h)); 
+        LOG_d(logDEBUG, "Lighouse: ", lighthouse); 
         (*index_h)++; 
     }
 
@@ -98,7 +102,11 @@ static int addSensor_Data(float angle, int sweeptype, uint16_t id)
         trackedSensor[id].angles_v[(*index_v)] = angle;
         trackedSensor[id].angles_v_count++;
 
+        trackedSensor[id].lighthouse[DataEntry_s2] = lighthouse;
+        trackedSensor[id].lighthouse_count++;
+
         LOG_d(logDEBUG, "VERTICAL sweep added at index: ", (*index_v)); 
+        LOG_d(logDEBUG, "Lighouse: ", lighthouse); 
         (*index_v)++;
     }
 
@@ -189,9 +197,11 @@ static int encode_send_Proto(uint16_t id)
     trackedSensor[id].angles_h_count = 0;
     trackedSensor[id].angles_v_count = 0;
     trackedSensor[id].timestamp_count = 0; 
+    trackedSensor[id].lighthouse_count = 0; 
     for(int i = 0; i < 20; ++i){
-        trackedSensor[id].angles_h[i]             = 0;
-        trackedSensor[id].angles_v[i]             = 0;
+        trackedSensor[id].angles_h[i]           = 0;
+        trackedSensor[id].angles_v[i]           = 0;
+        trackedSensor[id].lighthouse[i]         = 0;
     }
     
     return res; 

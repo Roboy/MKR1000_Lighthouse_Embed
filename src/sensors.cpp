@@ -8,8 +8,9 @@ volatile static Sensor sensor_2;
 volatile static Sensor sensor_3; 
 
 volatile static uint16_t    s1_sweep_start, s1_sweep_stop, s2_sweep_start, s2_sweep_stop, s3_sweep_start, s3_sweep_stop;  
-volatile static bool        s1_sweep_active, s2_sweep_active, s3_sweep_active; 
-volatile static bool        s1_synced = false, s2_synced = false, s3_synced = false;  
+volatile static uint16_t    s1_active_sweep_a, s1_active_sweep_b, s2_active_sweep_a, s2_active_sweep_b; 
+volatile static bool        s1_sweep_active, s2_sweep_active, s3_sweep_active, BaseStation; 
+volatile static bool        s1_synced = false, s2_synced = false, s3_synced = false; 
 volatile static Sweep       s1_sweep, s2_sweep, s3_sweep;  
 
 void rising_IRQ_S1(void)
@@ -89,37 +90,47 @@ void falling_IRQ_S2(void)
         if((60 < duration && 70 > duration)
                 || ( 81 < duration && 90 > duration))
         {
-            LOG_d(logINFO, "Vertical sweep detected: ", duration); 
-
             s2_sweep.vertical = true; 
             s2_synced = true; 
             s2_sweep_active = true; 
             s2_sweep_start = sensor_2.mStartT; 
 
         }else if(s2_synced == false){
-            LOG(logINFO, "skiped pulse to sync"); 
         }else if(( 71 < duration && 80 > duration)
                 || ( 91 < duration && 100 > duration))
         {
-            LOG_d(logINFO, "Horizontal sweep detected", duration); 
-
-            s2_sweep.vertical = false; 
-
-            s2_sweep_active = true; 
             s2_sweep_start = sensor_2.mStartT; 
-        } 
+            s2_sweep.vertical = false; 
+            s2_sweep_active = true; 
+        }
     }
     // laser sweep detected! Complete sweep-counting measurement 
     else if(true == s2_sweep_active && duration < 50)
     {
-        LOG_d(logINFO, "Laser sweep detected", duration); 
         s2_sweep_active = false; 
         s2_sweep.sweepDuration = sensor_2.mStartT - s2_sweep_start ; 
+        if(BaseStation == false){
+            s2_active_sweep_a = sensor_2.mStartT; 
+            BaseStation = true; 
+        }else{
+            s2_active_sweep_b = sensor_2.mStartT; 
+            //s2_sweep.lighthouse = (((s2_active_sweep_b - s2_active_sweep_a) > 6000) ? 0 : 1); 
+            uint16_t baseStationGap= ((s2_active_sweep_b - s2_active_sweep_a)); 
+            if(baseStationGap > 6500)
+            {
+                s2_sweep.lighthouse = 1;
+            }else{
+                s2_sweep.lighthouse = 0;
+            }
+
+            BaseStation = false; 
+        }
 
         Sweep * sweepWrite = static_cast<Sweep*>(malloc( sizeof(Sweep))); 
         if(sweepWrite != NULL){
             sweepWrite->sweepDuration   = s2_sweep.sweepDuration; 
             sweepWrite->vertical        = s2_sweep.vertical; 
+            sweepWrite->lighthouse        = s2_sweep.lighthouse;
         }
             
         FIFO128_write(sensor_2.mSweepFIFO, sweepWrite);  
@@ -234,7 +245,7 @@ static void processDuration(Sweep * detectedSweep, uint16_t id)
     {
         sweeptype = VERTICAL; 
         angle = detectedSweep->sweepDuration * MU_PER_DEGREE; 
-        LOG_f(logINFO,"Vertical Sweep detected", angle); 
+        LOG_f(logWARNING,"Vertical Sweep detected, duration : ", detectedSweep->sweepDuration); 
     }else 
     {
         sweeptype = HORIZONTAL; 
@@ -243,7 +254,7 @@ static void processDuration(Sweep * detectedSweep, uint16_t id)
     }    
 
     // adds the decoded Sensor Data to the respective Sensor ProtoBuffer in the TrackedObject protob
-    res = protoLove.addSensor_Data(angle, sweeptype, id);  
+    res = protoLove.addSensor_Data(angle, sweeptype, id, detectedSweep->lighthouse);  
 }
 
 void processSensorValues(void)
