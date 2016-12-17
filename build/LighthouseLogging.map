@@ -2601,9 +2601,9 @@ LOAD /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi
                 0x00000000000046b0        0x8 /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
                 0x00000000000046b0                initVariant()
  .text._ZL15initPeripheralsv
-                0x00000000000046b8       0xb0 /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
+                0x00000000000046b8       0xd0 /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
  .text._ZL19initPins_Interruptsv
-                0x0000000000004768       0x28 /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
+                0x0000000000004788        0x8 /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
  .text.main     0x0000000000004790      0x1bc /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/build/main.o
                 0x0000000000004790                main
  .text.SERCOM5_Handler

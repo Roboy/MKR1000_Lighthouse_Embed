@@ -557,7 +557,7 @@
 200029ac b _ZL18s2_IndexHorizontal
 000039a0 t _ZL19decode_config_ProtoPKhj
 00002438 t _ZL19getConnectionStatusv
-00004768 t _ZL19initPins_Interruptsv
+00004788 t _ZL19initPins_Interruptsv
 000021c8 t _ZL19printEncryptionTypeh
 00011650 t _ZL19STRING_MANUFACTURER
 20002c5c b _ZL20DEFAULT_SPI_SETTINGS

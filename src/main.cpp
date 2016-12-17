@@ -1,6 +1,7 @@
 #define ARDUINO_MAIN
 
 #include "board.h"
+#include "SPI.h"
 
 static int progStatus; 
 static int WiFiInfoCounter; 
