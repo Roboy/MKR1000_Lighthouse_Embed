@@ -5,7 +5,7 @@ static const char * LEVEL_STRING[] = {
 }; 
 
 static LogString * logString; 
-static TLogLevel currentLoglevel = logDEBUG; 
+static TLogLevel currentLoglevel = logVERBOSE; 
 
 static void printWiFiUDP()
 {

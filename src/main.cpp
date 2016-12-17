@@ -4,6 +4,7 @@
 
 static int progStatus; 
 static int WiFiInfoCounter; 
+static unsigned int  SS_N = 7, TRDY = 6;  // Pins for the SPI 
 
 // Weak empty variant initialization function.
 // May be redefined by variant files.
@@ -15,9 +16,7 @@ extern "C" void __libc_init_array(void);
 
 static void initPeripherals()
 {
-    sensorlove.initCounter(); 
-    sensorlove.initSensors();   
-
+    /************** WIFI *****************************/
     if(ES_WIFI_SUCCESS != whylove.initWifi()){
         Serial.println("Error in initializing the WiFi!"); 
     }else{
@@ -28,41 +27,34 @@ static void initPeripherals()
         Serial.println("Error in initializing the UDP Sockets!"); 
     }
 
+    /************** PROTOBUFFER ********************/
     if(ES_PROTO_SUCCESS != protoLove.initProto())
     {
         Serial.println("Error in initializing ProtoBuffers!"); 
     }
+   
+    /************** SPI ****************************/
+    pinMode(TRDY    ,INPUT); 
+    pinMode(SS_N    ,OUTPUT); 
+
+    SPI.begin();
+    SPI.setBitOrder(MSBFIRST);  
+
+    /************* SENSORS **************************/
+    sensorlove.initCounter(); 
+    sensorlove.initSensors();   
 }
 
 static void initPins_Interrupts(void)
 {
-    pinMode(6,INPUT); 
-    pinMode(8,INPUT); 
-    pinMode(9,INPUT); 
 
-    pinMode(1,INPUT); 
-    pinMode(0,INPUT); 
-    pinMode(3,INPUT); 
-
-    //attachInterrupt(6, sensorlove.rising_IRQ_S3, RISING); 
-    attachInterrupt(8, sensorlove.rising_IRQ_S1, RISING); 
-    attachInterrupt(9, sensorlove.rising_IRQ_S2, RISING); 
-
-    attachInterrupt(0, sensorlove.falling_IRQ_S1, FALLING); 
-    attachInterrupt(1, sensorlove.falling_IRQ_S2, FALLING); 
-    //attachInterrupt(3, sensorlove.falling_IRQ_S3, FALLING); 
 }
 
 // TODO: Improve logging system:
-// #1 get real time clock function 
-// #2 get Logginglevel from enum 
+// #1 attach Interrupt to the TRDY Pin
 // #3 Communication via UDP 
 // #4 BitMask to enable granularity logging
-// #5 GetLogString function for integers 
 
-// TODO:
-//
-//
 int main( void )
 {
     init();
@@ -77,11 +69,27 @@ int main( void )
 
     initPeripherals(); 
     initPins_Interrupts(); 
+    enableLogging = true;   
     
     for (;;)
     {
+        if(digitalRead(TRDY) == 1){
+            LOG(logINFO, "**********************************"); 
+            digitalWrite(SS_N, LOW); 
+            uint8_t dataT = 0; 
+            uint32_t dataR = SPI.transfer(dataT);
+            uint16_t dataR_1 =0;
+            uint16_t dataR_2 =0;
+            dataR_1 = SPI.transfer16(dataT);
+            dataR_2 = SPI.transfer16(dataT);
+            digitalWrite(SS_N, HIGH); 
+            dataR = dataR_1 << 16 | dataR_2; 
+            LOG_d(logINFO, "Data received", dataR_1); 
+            LOG_d(logINFO, "Data received", dataR_2); 
+            LOG_d(logINFO, "Merged Data", dataR); 
+        }
         //whylove.printWifiStatus(); 
-        sensorlove.processSensorValues(); 
+        //sensorlove.processSensorValues(); 
     }
     return 0;
 }
