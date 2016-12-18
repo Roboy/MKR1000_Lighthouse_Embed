@@ -103,6 +103,7 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/RingBuffer.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/USB_host.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/USB/samd21_host.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/SPI.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wirelessLove.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/fifo.h \

@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include "Arduino.h"
+#include "SPI.h"
 
 extern "C" {
 #include "wirelessLove.h"
@@ -11,12 +12,14 @@ extern "C" {
 #include "logging.h"
 }
 
+#define BITS_LAST(k,n)  ((k) & ((1 << (n))-1))                  // get n-last bits from number k 
+#define RANGE(k, m, n)    BITS_LAST(((k) >> m), ((n)-(m)))        // get bit range [m-n] from number k 
+#define FIFO_SIZE 128
 
-typedef enum _SENSORTYPE{
-    SENSOR_1 = 1,
-    SENSOR_2 = 2,
-    SENSOR_3 = 3, 
-}SENSORTYPE; 
+typedef enum _SPI_PINS{
+    TRDY = 6,
+    SS_N = 7,  
+}_SPI_PINS; 
 
 typedef enum SWEEPTYPE{
     NONE = 0, 

@@ -52,19 +52,19 @@ typedef struct LogString
 }LogString; 
 
 #define LOG(level, message) \
-    if (level > (logi.GetReportingLevel()) || false == enableLogging); \
+    if (level > (logi.GetReportingLevel()) || (false == enableLogging)); \
     else logi.GetLogString(level, message)
 
 #define LOG_ld(level, message, number) \
-    if (level > (logi.GetReportingLevel()) || false == enableLogging); \
+    if (level > (logi.GetReportingLevel()) || (false == enableLogging)); \
     else logi.MakeldLogString(level, message, number)
 
 #define LOG_d(level, message, number ) \
-    if (level > (logi.GetReportingLevel()) || false == enableLogging); \
+    if (level > (logi.GetReportingLevel()) || (false == enableLogging)); \
     else logi.MakedLogString(level, (message), (number))
 
 #define LOG_f(level, message, number ) \
-    if (level > (logi.GetReportingLevel()) || false == enableLogging); \
+    if (level > (logi.GetReportingLevel()) || (false == enableLogging)); \
     else logi.MakefLogString(level, message, number)
 
 

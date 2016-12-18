@@ -34,7 +34,7 @@ UPLOAD_BOSSA=$(MODULE_PATH)/tools/bossac
 ARM_GCC_PATH?=$(MODULE_PATH)/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
 ARM_GCC_PATH?=/home/sebtut/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-
 BUILD_PATH=$(MODULE_PATH)/build
-UPLOAD_PORT_BASENAME=ttyACM1
+UPLOAD_PORT_BASENAME=ttyACM0
 UPLOAD_BOSSA=$(MODULE_PATH)/tools/bossac
 
 ifdef DEBUG

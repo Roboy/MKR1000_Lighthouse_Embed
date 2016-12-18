@@ -6,6 +6,7 @@
 typedef struct Sweep{
     uint16_t        sweepDuration; 
     uint16_t        lighthouse; 
+    uint16_t        id; 
     bool            vertical; 
 }Sweep; 
 
