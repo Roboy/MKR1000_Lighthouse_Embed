@@ -89,7 +89,7 @@ int main( void )
             LOG_d(logINFO, "rotor\t\t", dataR >> 9 & 0x01); 
             LOG_d(logINFO, "lighthouse:\t\t", dataR >> 10 & 0x01); 
             LOG_d(logINFO, "sweep duration:\t\t", dataR >> 11 & 0x01FFFFF); 
-            LOG_d(logINFO, "angle:\t\t", (dataR >> 11 & 0x01FFFFF)*0.000261); 
+            LOG_d(logINFO, "angle:\t\t", (dataR >> 11 & 0x01FFFFF)*0.00216); 
         }
         //whylove.printWifiStatus(); 
         //sensorlove.processSensorValues(); 
