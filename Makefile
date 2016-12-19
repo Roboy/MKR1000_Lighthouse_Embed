@@ -22,7 +22,7 @@
 NAME=LighthouseLogging
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	MODULE_PATH?=$(HOME)/WS16_17/Roboy/MKR1000_Lighthouse_Embed
+	MODULE_PATH?=$(HOME)/workspace/MKR1000_Lighthouse_Embed
 	RM=rm
 	SEP=/
 	MKDIR= mkdir -p
@@ -32,9 +32,9 @@ VPATH = src : $(WIFIPATH) : $(WIFIPATH)/driver/source : $(WIFIPATH)/common/sourc
 
 UPLOAD_BOSSA=$(MODULE_PATH)/tools/bossac
 ARM_GCC_PATH?=$(MODULE_PATH)/tools/gcc-arm-none-eabi/bin/arm-none-eabi-
-ARM_GCC_PATH?=/home/sebtut/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-
+ARM_GCC_PATH?=$(HOME)/.arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-
 BUILD_PATH=$(MODULE_PATH)/build
-UPLOAD_PORT_BASENAME=ttyACM1
+UPLOAD_PORT_BASENAME=ttyACM0
 UPLOAD_BOSSA=$(MODULE_PATH)/tools/bossac
 
 ifdef DEBUG

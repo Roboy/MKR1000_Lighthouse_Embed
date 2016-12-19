@@ -85,9 +85,11 @@ int main( void )
             dataR_2 = SPI.transfer16(dataT);
             digitalWrite(SS_N, HIGH); 
             dataR = dataR_1 << 16 | dataR_2; 
-            LOG_d(logINFO, "Data received", dataR_1); 
-            LOG_d(logINFO, "Data received", dataR_2); 
-            LOG_d(logINFO, "Merged Data", dataR); 
+            LOG_d(logINFO, "sensor:\t\t", dataR & 0x01FF); 
+            LOG_d(logINFO, "rotor\t\t", dataR >> 9 & 0x01); 
+            LOG_d(logINFO, "lighthouse:\t\t", dataR >> 10 & 0x01); 
+            LOG_d(logINFO, "sweep duration:\t\t", dataR >> 11 & 0x01FFFFF); 
+            LOG_d(logINFO, "angle:\t\t", (dataR >> 11 & 0x01FFFFF)*0.000261); 
         }
         //whylove.printWifiStatus(); 
         //sensorlove.processSensorValues(); 
