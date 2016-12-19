@@ -1,7 +1,7 @@
 #include "sensors.h"
 #include "lighthouse_sensor.pb.h"
 
-#define MU_PER_DEGREE 0.000216
+#define MU_PER_DEGREE 0.00216
 
 volatile static Sensor sensors; 
 volatile static Sweep sweeps[FIFO_SIZE] = {0, 0, 0, 0}; 
@@ -10,15 +10,16 @@ volatile static uint8_t sweepIndex = 0;
 void sensor_spi(void)
 {
     digitalWrite(SS_N, LOW); 
-    uint8_t dataT = 0, dataR[4], i = 0; 
+    uint8_t dataT = 0; 
     uint32_t dataR_f= 0; 
-    SPI.transfer(dataT);                    // instruct the slave to get into transmit / receive mode
-    for( i = 0; i < 4; i++){             // (send) read data from the spi slave
-        dataR[i] = SPI.transfer(dataT); 
-    }
-    dataR_f = (dataR[0] << 24) | (dataR[1] << 16) | (dataR[2] << 8) | (dataR[3] << 0); 
+    uint16_t dataR_1 =0;
+    uint16_t dataR_2 =0;
+    uint32_t dataR = SPI.transfer(dataT);
+    dataR_1 = SPI.transfer16(dataT);
+    dataR_2 = SPI.transfer16(dataT);
     digitalWrite(SS_N, HIGH); 
-    // reading done, decode received data according to our protocol 
+    dataR_f = dataR_1 << 16 | dataR_2;     
+// reading done, decode received data according to our protocol 
     Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
     (FIFO_SIZE - 1 == sweepIndex) ? sweepIndex++ : sweepIndex = 0; 
     //rcvS->id             = BITS_LAST(dataR_f, 9); 
@@ -29,7 +30,9 @@ void sensor_spi(void)
     rcvS->id             = dataR_f & 0x01FF; 
     rcvS->vertical       = (dataR_f >> 9) & 0x01; 
     rcvS->lighthouse     = (dataR_f >> 10) & 0x01; 
-    rcvS->sweepDuration  = (dataR_f >> 11) & 0x01FFFFF; 
+    rcvS->sweepDuration  = (dataR_f >> 11) & 0x01FFFFF;
+
+    //Serial.println(rcvS->sweepDuration); 
 
     FIFO128_write(sensors.mSweepFIFO, rcvS); 
     LOG_d(logINFO, "ID: ", rcvS->id); 
