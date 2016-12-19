@@ -40,7 +40,7 @@ typedef struct _FIFO128t{
     }                                                                               \
 }
 
-#define FIFO128_read(fifo)              FIFO_read(fifo, 128)
-#define FIFO128_write(fifo, data)       FIFO_write(fifo, data, 128)
+#define FIFO128_read(fifo)              FIFO_read(fifo, FIFO_SIZE)
+#define FIFO128_write(fifo, data)       FIFO_write(fifo, data, FIFO_SIZE)
 
 #endif // FIFO_H

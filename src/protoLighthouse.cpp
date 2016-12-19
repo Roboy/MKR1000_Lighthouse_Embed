@@ -4,12 +4,15 @@
 #include "pb_encode.h"
 #include "pb_decode.h"
 
+#define MAX_NUMBER_SENSOR_VALUES 4
+#define NUMBER_OF_SENSORS 8
+
 bool                                        status; 
 size_t                                      msg_len; 
 static  uint32_t                            DataEntry[30] = {0}; 
 static  uint32_t                            IndexVertical[30] = {0}; 
 static  uint32_t                            IndexHorizontal[30] = {0}; 
-mkr1000_lighthouse_sensor                   trackedSensor[10]; 
+mkr1000_lighthouse_sensor                   trackedSensor[NUMBER_OF_SENSORS]; 
 mkr1000_lighthouse_configObject             configObjMsg; 
 
 static int encode_send_Proto(uint16_t id);
@@ -18,7 +21,7 @@ static int initProto()
 {
     uint8_t res = ES_PROTO_ERROR;
 
-    for(int i = 0; i <= 9; i++){
+    for(int i = 0; i < NUMBER_OF_SENSORS; i++){
         trackedSensor[i] = mkr1000_lighthouse_sensor_init_zero;
     }
     configObjMsg = mkr1000_lighthouse_configObject_init_zero; 
@@ -42,7 +45,7 @@ static void incrementSensorEntry(uint16_t id)
 
     (*d_entry)++;
     LOG_d(logVERBOSE, "incrementSensor Entry", *d_entry);  
-    if((*d_entry) == 10)
+    if((*d_entry) == MAX_NUMBER_SENSOR_VALUES)
     {
         LOG_d(logVERBOSE, "reached limit Sensor Entries ID: ", id); 
         encode_send_Proto(id); 

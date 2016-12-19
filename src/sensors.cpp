@@ -1,7 +1,7 @@
 #include "sensors.h"
 #include "lighthouse_sensor.pb.h"
 
-#define MU_PER_DEGREE 0.00216
+#define MU_PER_DEGREE 0.0216
 
 volatile static Sensor sensors; 
 volatile static Sweep sweeps[FIFO_SIZE] = {0, 0, 0, 0}; 
@@ -31,8 +31,6 @@ void sensor_spi(void)
     rcvS->vertical       = (dataR_f >> 9) & 0x01; 
     rcvS->lighthouse     = (dataR_f >> 10) & 0x01; 
     rcvS->sweepDuration  = (dataR_f >> 11) & 0x01FFFFF;
-
-    //Serial.println(rcvS->sweepDuration); 
 
     FIFO128_write(sensors.mSweepFIFO, rcvS); 
     LOG_d(logINFO, "ID: ", rcvS->id); 
@@ -90,7 +88,7 @@ static void processDuration(Sweep * detectedSweep)
     LOG(logVERBOSE_3, "process Sensor Values"); 
 
     // decode the sync pulse length based on the reverse engineered protocol from https://github.com/nairol/LighthouseRedox/blob/master/docs/Light%20Emissions.md
-    if(0 == detectedSweep->vertical)
+    if(detectedSweep->vertical == 0)
     {
         sweeptype = VERTICAL; 
         angle = detectedSweep->sweepDuration * MU_PER_DEGREE; 

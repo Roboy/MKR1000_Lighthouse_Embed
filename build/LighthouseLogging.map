@@ -4170,7 +4170,7 @@ LOAD /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bi
 .igot.plt       0x00000000200001b0        0x0 load address 0x0000000000011410
  .igot.plt      0x0000000000000000        0x0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/armv6-m/crtbegin.o
 
-.bss            0x00000000200001b0     0x3d50 load address 0x0000000000011410
+.bss            0x00000000200001b0     0x3b90 load address 0x0000000000011410
                 0x00000000200001b0                . = ALIGN (0x4)
                 0x00000000200001b0                __bss_start__ = .
  *(.bss*)
@@ -4206,188 +4206,188 @@ LOAD /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bi
  .bss._ZL15IndexHorizontal
                 0x0000000020002c38       0x78 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/protoLighthouse.o
  .bss.trackedSensor
-                0x0000000020002cb0      0x8c0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/protoLighthouse.o
+                0x0000000020002cb0      0x700 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/protoLighthouse.o
                 0x0000000020002cb0                trackedSensor
  .bss.configObjMsg
-                0x0000000020003570       0x10 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/protoLighthouse.o
-                0x0000000020003570                configObjMsg
+                0x00000000200033b0       0x10 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/protoLighthouse.o
+                0x00000000200033b0                configObjMsg
  .bss._ZL9logString
-                0x0000000020003580        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/logging.o
- .bss.sercom0   0x0000000020003584        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
-                0x0000000020003584                sercom0
- .bss.sercom1   0x0000000020003588        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
-                0x0000000020003588                sercom1
- .bss.sercom2   0x000000002000358c        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
-                0x000000002000358c                sercom2
- .bss.sercom3   0x0000000020003590        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
-                0x0000000020003590                sercom3
- .bss.sercom4   0x0000000020003594        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
-                0x0000000020003594                sercom4
- .bss.sercom5   0x0000000020003598        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
-                0x0000000020003598                sercom5
- .bss.Serial1   0x000000002000359c       0x60 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
-                0x000000002000359c                Serial1
+                0x00000000200033c0        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/logging.o
+ .bss.sercom0   0x00000000200033c4        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
+                0x00000000200033c4                sercom0
+ .bss.sercom1   0x00000000200033c8        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
+                0x00000000200033c8                sercom1
+ .bss.sercom2   0x00000000200033cc        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
+                0x00000000200033cc                sercom2
+ .bss.sercom3   0x00000000200033d0        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
+                0x00000000200033d0                sercom3
+ .bss.sercom4   0x00000000200033d4        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
+                0x00000000200033d4                sercom4
+ .bss.sercom5   0x00000000200033d8        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
+                0x00000000200033d8                sercom5
+ .bss.Serial1   0x00000000200033dc       0x60 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/variant.o
+                0x00000000200033dc                Serial1
  .bss._ZL20DEFAULT_SPI_SETTINGS
-                0x00000000200035fc        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/SPI.o
- .bss.SPI       0x0000000020003604       0x10 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/SPI.o
-                0x0000000020003604                SPI
- .bss.SPI1      0x0000000020003614       0x10 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/SPI.o
-                0x0000000020003614                SPI1
+                0x000000002000343c        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/SPI.o
+ .bss.SPI       0x0000000020003444       0x10 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/SPI.o
+                0x0000000020003444                SPI
+ .bss.SPI1      0x0000000020003454       0x10 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/SPI.o
+                0x0000000020003454                SPI1
  .bss._ZL11INADDR_NONE
-                0x0000000020003624        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFi.o
- .bss.WiFi      0x000000002000362c       0x8c /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFi.o
-                0x000000002000362c                WiFi
+                0x0000000020003464        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFi.o
+ .bss.WiFi      0x000000002000346c       0x8c /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFi.o
+                0x000000002000346c                WiFi
  .bss._ZL11INADDR_NONE
-                0x00000000200036b8        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiMDNSResponder.o
+                0x00000000200034f8        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiMDNSResponder.o
  .bss._ZL11INADDR_NONE
-                0x00000000200036c0        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiUdp.o
+                0x0000000020003500        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiUdp.o
  .bss._ZL11INADDR_NONE
-                0x00000000200036c8        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiClient.o
+                0x0000000020003508        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiClient.o
  .bss._ZL11INADDR_NONE
-                0x00000000200036d0        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiSSLClient.o
+                0x0000000020003510        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiSSLClient.o
  .bss._ZL11INADDR_NONE
-                0x00000000200036d8        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiServer.o
+                0x0000000020003518        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/WiFiServer.o
  .bss._ZL16wifi_SPISettings
-                0x00000000200036e0        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nm_bus_wrapper_samd21.o
+                0x0000000020003520        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nm_bus_wrapper_samd21.o
  .bss.chipid.4763
-                0x00000000200036e8        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nmasic.o
+                0x0000000020003528        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nmasic.o
  .bss.gpfAppWifiCb
-                0x00000000200036ec        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_wifi.o
+                0x000000002000352c        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_wifi.o
  .bss.gu8scanInProgress
-                0x00000000200036f0        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_wifi.o
- .bss.gu8ChNum  0x00000000200036f1        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_wifi.o
- *fill*         0x00000000200036f2        0x2 
+                0x0000000020003530        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_wifi.o
+ .bss.gu8ChNum  0x0000000020003531        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_wifi.o
+ *fill*         0x0000000020003532        0x2 
  .bss.pfCryptoCb
-                0x00000000200036f4        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
-                0x00000000200036f4                pfCryptoCb
+                0x0000000020003534        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x0000000020003534                pfCryptoCb
  .bss.hif_small_xfer
-                0x00000000200036f8        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
-                0x00000000200036f8                hif_small_xfer
- *fill*         0x00000000200036f9        0x3 
- .bss.pfWifiCb  0x00000000200036fc        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
-                0x00000000200036fc                pfWifiCb
+                0x0000000020003538        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x0000000020003538                hif_small_xfer
+ *fill*         0x0000000020003539        0x3 
+ .bss.pfWifiCb  0x000000002000353c        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x000000002000353c                pfWifiCb
  .bss.gu8Interrupt
-                0x0000000020003700        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
- *fill*         0x0000000020003701        0x3 
- .bss.pfHifCb   0x0000000020003704        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
-                0x0000000020003704                pfHifCb
+                0x0000000020003540        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+ *fill*         0x0000000020003541        0x3 
+ .bss.pfHifCb   0x0000000020003544        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x0000000020003544                pfHifCb
  .bss.pfSigmaCb
-                0x0000000020003708        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
-                0x0000000020003708                pfSigmaCb
+                0x0000000020003548        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x0000000020003548                pfSigmaCb
  .bss.gu8ChipMode
-                0x000000002000370c        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
- *fill*         0x000000002000370d        0x3 
- .bss.pfIpCb    0x0000000020003710        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
-                0x0000000020003710                pfIpCb
+                0x000000002000354c        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+ *fill*         0x000000002000354d        0x3 
+ .bss.pfIpCb    0x0000000020003550        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x0000000020003550                pfIpCb
  .bss.gu8HifSizeDone
-                0x0000000020003714        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
- *fill*         0x0000000020003715        0x3 
- .bss.pfOtaCb   0x0000000020003718        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
-                0x0000000020003718                pfOtaCb
+                0x0000000020003554        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+ *fill*         0x0000000020003555        0x3 
+ .bss.pfOtaCb   0x0000000020003558        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x0000000020003558                pfOtaCb
  .bss.gu8ChipSleep
-                0x000000002000371c        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
+                0x000000002000355c        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/m2m_hif.o
  .bss.gu8Crc_off
-                0x000000002000371d        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nmspi.o
- *fill*         0x000000002000371e        0x2 
- .bss.gpfIsr    0x0000000020003720        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nm_bsp_arduino.o
+                0x000000002000355d        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nmspi.o
+ *fill*         0x000000002000355e        0x2 
+ .bss.gpfIsr    0x0000000020003560        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/nm_bsp_arduino.o
  .bss.gbSocketInit
-                0x0000000020003724        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
-                0x0000000020003724                gbSocketInit
+                0x0000000020003564        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
+                0x0000000020003564                gbSocketInit
  .bss.sock_xfer
-                0x0000000020003725        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
- *fill*         0x0000000020003726        0x2 
+                0x0000000020003565        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
+ *fill*         0x0000000020003566        0x2 
  .bss.u32Address
-                0x0000000020003728        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
- .bss.msg_xfer  0x000000002000372c       0x18 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
+                0x0000000020003568        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
+ .bss.msg_xfer  0x000000002000356c       0x18 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
  .bss.gu16SessionID
-                0x0000000020003744        0x2 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
-                0x0000000020003744                gu16SessionID
+                0x0000000020003584        0x2 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
+                0x0000000020003584                gu16SessionID
  .bss.type_xfer
-                0x0000000020003746        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
- *fill*         0x0000000020003747        0x1 
+                0x0000000020003586        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
+ *fill*         0x0000000020003587        0x1 
  .bss.enabled.12256
-                0x0000000020003748        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(WInterrupts.c.o)
+                0x0000000020003588        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(WInterrupts.c.o)
  .bss.callbacksInt
-                0x000000002000374c       0x44 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(WInterrupts.c.o)
- .bss.usb_isr   0x0000000020003790        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(cortex_handlers.c.o)
+                0x000000002000358c       0x44 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(WInterrupts.c.o)
+ .bss.usb_isr   0x00000000200035d0        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(cortex_handlers.c.o)
  .bss._ulTickCount
-                0x0000000020003794        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(delay.c.o)
+                0x00000000200035d4        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(delay.c.o)
  .bss._ZL11INADDR_NONE
-                0x0000000020003798        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(IPAddress.cpp.o)
+                0x00000000200035d8        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(IPAddress.cpp.o)
  .bss.SerialUSB
-                0x00000000200037a0       0x1c /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(CDC.cpp.o)
-                0x00000000200037a0                SerialUSB
+                0x00000000200035e0       0x1c /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(CDC.cpp.o)
+                0x00000000200035e0                SerialUSB
  .bss._ZL14isEndpointHalt
-                0x00000000200037bc        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x00000000200035fc        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
  .bss._pack_buffer
-                0x00000000200037bd      0x100 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x00000000200037bd                _pack_buffer
- *fill*         0x00000000200038bd        0x1 
+                0x00000000200035fd      0x100 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x00000000200035fd                _pack_buffer
+ *fill*         0x00000000200036fd        0x1 
  .bss._pack_size
-                0x00000000200038be        0x2 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x00000000200038be                _pack_size
+                0x00000000200036fe        0x2 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x00000000200036fe                _pack_size
  .bss._ZL20LastTransmitTimedOut
-                0x00000000200038c0        0x7 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
- *fill*         0x00000000200038c7        0x1 
+                0x0000000020003700        0x7 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+ *fill*         0x0000000020003707        0x1 
  .bss._ZL22udd_ep_in_cache_buffer
-                0x00000000200038c8      0x1c0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003708      0x1c0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
  .bss._ZL23udd_ep_out_cache_buffer
-                0x0000000020003a88      0x1c0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x00000000200038c8      0x1c0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
  .bss._ZL10epHandlers
-                0x0000000020003c48       0x1c /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003a88       0x1c /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
  .bss._pack_message
-                0x0000000020003c64        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x0000000020003c64                _pack_message
+                0x0000000020003aa4        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003aa4                _pack_message
  .bss._ZL21isRemoteWakeUpEnabled
-                0x0000000020003c65        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
- .bss._dry_run  0x0000000020003c66        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x0000000020003c66                _dry_run
+                0x0000000020003aa5        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+ .bss._dry_run  0x0000000020003aa6        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003aa6                _dry_run
  .bss.USBDevice
-                0x0000000020003c67        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x0000000020003c67                USBDevice
+                0x0000000020003aa7        0x1 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003aa7                USBDevice
  .bss._usbSetInterface
-                0x0000000020003c68        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x0000000020003c68                _usbSetInterface
- .bss.usbd      0x0000000020003c6c      0x104 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x0000000020003c6c                usbd
+                0x0000000020003aa8        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003aa8                _usbSetInterface
+ .bss.usbd      0x0000000020003aac      0x104 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003aac                usbd
  .bss._usbConfiguration
-                0x0000000020003d70        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
-                0x0000000020003d70                _usbConfiguration
+                0x0000000020003bb0        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(USBCore.cpp.o)
+                0x0000000020003bb0                _usbConfiguration
  .bss._ZZ12PluggableUSBvE3obj
-                0x0000000020003d74        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(PluggableUSB.cpp.o)
+                0x0000000020003bb4        0x8 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(PluggableUSB.cpp.o)
  .bss._ZGVZ12PluggableUSBvE3obj
-                0x0000000020003d7c        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(PluggableUSB.cpp.o)
+                0x0000000020003bbc        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/lib/libcore.a(PluggableUSB.cpp.o)
  .bss.__malloc_sbrk_start
-                0x0000000020003d80        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-nano-mallocr.o)
-                0x0000000020003d80                __malloc_sbrk_start
+                0x0000000020003bc0        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-nano-mallocr.o)
+                0x0000000020003bc0                __malloc_sbrk_start
  .bss.__malloc_free_list
-                0x0000000020003d84        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-nano-mallocr.o)
-                0x0000000020003d84                __malloc_free_list
+                0x0000000020003bc4        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-nano-mallocr.o)
+                0x0000000020003bc4                __malloc_free_list
  .bss.heap_end.4243
-                0x0000000020003d88        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(sbrk.o)
+                0x0000000020003bc8        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libnosys.a(sbrk.o)
  *(COMMON)
- COMMON         0x0000000020003d8c       0xc0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
-                0x0000000020003d8c                gu16BufferSize
-                0x0000000020003d8e                gsockerrno
-                0x0000000020003d8f                gu8OpCode
-                0x0000000020003d90                gastrSockets
-                0x0000000020003e40                gpfAppSocketCb
-                0x0000000020003e44                gfpPingCb
-                0x0000000020003e48                gpfAppResolveCb
- COMMON         0x0000000020003e4c       0xb0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket_buffer.o
-                0x0000000020003e4c                gastrSocketBuffer
- COMMON         0x0000000020003efc        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-reent.o)
-                0x0000000020003efc                errno
-                0x0000000020003f00                . = ALIGN (0x4)
-                0x0000000020003f00                __bss_end__ = .
+ COMMON         0x0000000020003bcc       0xc0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket.o
+                0x0000000020003bcc                gu16BufferSize
+                0x0000000020003bce                gsockerrno
+                0x0000000020003bcf                gu8OpCode
+                0x0000000020003bd0                gastrSockets
+                0x0000000020003c80                gpfAppSocketCb
+                0x0000000020003c84                gfpPingCb
+                0x0000000020003c88                gpfAppResolveCb
+ COMMON         0x0000000020003c8c       0xb0 /home/letrend/workspace/MKR1000_Lighthouse_Embed/build/socket_buffer.o
+                0x0000000020003c8c                gastrSocketBuffer
+ COMMON         0x0000000020003d3c        0x4 /home/letrend/workspace/MKR1000_Lighthouse_Embed/tools/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv6-m/libc_s.a(lib_a-reent.o)
+                0x0000000020003d3c                errno
+                0x0000000020003d40                . = ALIGN (0x4)
+                0x0000000020003d40                __bss_end__ = .
 
-.heap           0x0000000020003f00        0x0
-                0x0000000020003f00                __end__ = .
-                0x0000000020003f00                PROVIDE (end, .)
+.heap           0x0000000020003d40        0x0
+                0x0000000020003d40                __end__ = .
+                0x0000000020003d40                PROVIDE (end, .)
  *(.heap*)
-                0x0000000020003f00                __HeapLimit = .
+                0x0000000020003d40                __HeapLimit = .
 
-.stack_dummy    0x0000000020003f00        0x0
+.stack_dummy    0x0000000020003d40        0x0
  *(.stack*)
                 0x0000000020008000                __StackTop = (ORIGIN (RAM) + 0x8000)
                 0x0000000020008000                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
