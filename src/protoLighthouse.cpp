@@ -4,7 +4,7 @@
 #include "pb_encode.h"
 #include "pb_decode.h"
 
-#define MAX_NUMBER_SENSOR_VALUES 4
+#define MAX_NUMBER_SENSOR_VALUES 2
 #define NUMBER_OF_SENSORS 8
 
 bool                                        status; 

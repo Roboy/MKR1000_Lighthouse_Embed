@@ -14,7 +14,7 @@ extern "C" {
 
 #define BITS_LAST(k,n)  ((k) & ((1 << (n))-1))                  // get n-last bits from number k 
 #define RANGE(k, m, n)    BITS_LAST(((k) >> m), ((n)-(m)))        // get bit range [m-n] from number k 
-#define FIFO_SIZE 128
+#define FIFO_SIZE 16
 
 typedef enum _SPI_PINS{
     TRDY = 6,
