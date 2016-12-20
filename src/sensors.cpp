@@ -19,25 +19,22 @@ void sensor_spi(void)
     dataR_2 = SPI.transfer16(dataT);
     digitalWrite(SS_N, HIGH); 
     dataR_f = dataR_1 << 16 | dataR_2;     
+    if( (dataR >> 12 & 0x01) == 1 ){ // if valid 
 // reading done, decode received data according to our protocol 
-    Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
-    (FIFO_SIZE - 1 == sweepIndex) ? sweepIndex++ : sweepIndex = 0; 
-    //rcvS->id             = BITS_LAST(dataR_f, 9); 
-    //rcvS->vertical       = RANGE(dataR_f, 9, 10);
-    //rcvS->lighthouse     = RANGE(dataR_f, 10, 11);
-    //rcvS->sweepDuration  = RANGE(dataR_f, 11, 23); 
+    	Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
+    	(FIFO_SIZE - 1 == sweepIndex) ? sweepIndex++ : sweepIndex = 0; 
+	rcvS->id             = dataR_f & 0x01FF; 
+	rcvS->lighthouse     = (dataR_f >> 9) & 0x01; 
+	rcvS->vertical       = (dataR_f >> 10) & 0x01; 
+	rcvS->sweepDuration  = (dataR_f >> 13) & 0x07FFFF;
 
-    rcvS->id             = dataR_f & 0x01FF; 
-    rcvS->vertical       = (dataR_f >> 9) & 0x01; 
-    rcvS->lighthouse     = (dataR_f >> 10) & 0x01; 
-    rcvS->sweepDuration  = (dataR_f >> 11) & 0x01FFFFF;
-
-    FIFO128_write(sensors.mSweepFIFO, rcvS); 
-    LOG_d(logINFO, "ID: ", rcvS->id); 
-    LOG_d(logINFO, "vertical: ", rcvS->vertical); 
-    LOG_d(logINFO, "lighthouse: ", rcvS->lighthouse); 
-    LOG_d(logINFO, "sweepDuration: ", rcvS->sweepDuration); 
-    LOG(logWARNING, "******************************************"); 
+	FIFO128_write(sensors.mSweepFIFO, rcvS); 
+	LOG_d(logINFO, "ID: ", rcvS->id); 
+	LOG_d(logINFO, "vertical: ", rcvS->vertical); 
+	LOG_d(logINFO, "lighthouse: ", rcvS->lighthouse); 
+	LOG_d(logINFO, "sweepDuration: ", rcvS->sweepDuration); 
+	LOG(logWARNING, "******************************************");
+    }
 }
 
 void initSensors()
