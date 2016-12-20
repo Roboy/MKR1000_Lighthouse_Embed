@@ -75,7 +75,6 @@ int main( void )
     for (;;)
     {
         if(digitalRead(TRDY) == 1){
-            LOG(logINFO, "**********************************"); 
             digitalWrite(SS_N, LOW); 
             uint8_t dataT = 0; 
             uint32_t dataR = SPI.transfer(dataT);
@@ -84,12 +83,19 @@ int main( void )
             dataR_1 = SPI.transfer16(dataT);
             dataR_2 = SPI.transfer16(dataT);
             digitalWrite(SS_N, HIGH); 
-            dataR = dataR_1 << 16 | dataR_2; 
-            LOG_d(logINFO, "sensor:\t\t", dataR & 0x01FF); 
-            LOG_d(logINFO, "rotor\t\t", dataR >> 9 & 0x01); 
-            LOG_d(logINFO, "lighthouse:\t\t", dataR >> 10 & 0x01); 
-            LOG_d(logINFO, "sweep duration:\t\t", dataR >> 11 & 0x01FFFFF); 
-            LOG_d(logINFO, "angle:\t\t", (dataR >> 11 & 0x01FFFFF)*0.00216); 
+            dataR = dataR_1 << 16 | dataR_2;
+	    if( (dataR >> 12 & 0x01) == 1 ){ // if valid 
+            	LOG(logINFO, "**********************************"); 
+            	LOG_d(logINFO, "sensor:          ", dataR & 0x01FF); 
+            	LOG_d(logINFO, "lighthouse:      ", dataR >> 9 & 0x01); 
+            	LOG_d(logINFO, "rotor:           ", dataR >> 10 & 0x01); 
+            	LOG_d(logINFO, "data:            ", dataR >> 11 & 0x01); 
+            	LOG_d(logINFO, "sweep duration:  ", dataR >> 13 & 0x07FFFF); 
+            	LOG_d(logINFO, "angle:           ", (dataR >> 13 & 0x07FFFF)*0.0216); 
+	    }else{
+	//	LOG_d(logINFO, "no sweep sensor: ", dataR & 0x01FF);
+	//	LOG_d(logINFO, "lighthouse:      ", dataR >> 9 & 0x01);
+	    }
         }
         //whylove.printWifiStatus(); 
         //sensorlove.processSensorValues(); 
