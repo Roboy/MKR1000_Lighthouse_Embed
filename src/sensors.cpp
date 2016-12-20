@@ -19,7 +19,7 @@ void sensor_spi(void)
     dataR_2 = SPI.transfer16(dataT);
     digitalWrite(SS_N, HIGH); 
     dataR_f = dataR_1 << 16 | dataR_2;     
-    if( (dataR >> 12 & 0x01) == 1 ){ // if valid 
+    if( (dataR_f >> 12 & 0x01) == 1 ){ // if valid 
 // reading done, decode received data according to our protocol 
     	Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
     	(FIFO_SIZE - 1 == sweepIndex) ? sweepIndex++ : sweepIndex = 0; 
@@ -34,7 +34,7 @@ void sensor_spi(void)
 	LOG_d(logINFO, "lighthouse: ", rcvS->lighthouse); 
 	LOG_d(logINFO, "sweepDuration: ", rcvS->sweepDuration); 
 	LOG(logWARNING, "******************************************");
-    }
+   }
 }
 
 void initSensors()
