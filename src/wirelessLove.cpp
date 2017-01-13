@@ -184,6 +184,24 @@ static int sendUDPPacket(const uint8_t * buffer, size_t size)
     return (int) ES_WIFI_SUCCESS; 
 }
 
+static int sendUDPPacket_TimeStamp(const uint8_t * buffer, size_t size)
+{
+    UDP_sensors.beginPacket(remoteIP, sensorPort_t); 
+
+    unsigned long t = millis(); 
+    uint8_t *addr = (uint8_t*)&t;
+    for(int i =  0; i < 2; i++){
+        UDP_sensors.write(addr[i]);
+    }
+
+    if(size != UDP_sensors.write(buffer, size)){
+        Serial.println("Size of the UDP Package to big! Truncated overlapping data"); 
+    }
+
+    UDP_sensors.endPacket();
+    return (int) ES_WIFI_SUCCESS; 
+}
+
 static int receiveUDPPacket(const uint8_t *buffer, size_t size){
     uint8_t res = ES_WIFI_SUCCESS; 
     int packetSize = UDP_commands.parsePacket(); 
@@ -202,4 +220,4 @@ static int receiveUDPPacket(const uint8_t *buffer, size_t size){
 }
 
 
-WIFI_LOVE const whylove = {printMacAddress, printEncryptionType, printAvailableNetworks, printWifiStatus, initWifi, initUDPSockets , sendUDPTestPacket, sendUDPPacket, receiveUDPPacket, getConnectionStatus}; 
+WIFI_LOVE const whylove = {printMacAddress, printEncryptionType, printAvailableNetworks, printWifiStatus, initWifi, initUDPSockets , sendUDPTestPacket, sendUDPPacket_TimeStamp, sendUDPPacket, receiveUDPPacket, getConnectionStatus}; 

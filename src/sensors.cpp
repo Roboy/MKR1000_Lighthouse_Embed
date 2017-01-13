@@ -10,19 +10,19 @@ volatile static uint8_t sweepIndex = 0;
 class SensorData 
 {
     public:
-        SensorData(uint16_t timestamp); 
+        SensorData(); 
         void printDataArray() const; 
 
-        const static int arrayLen = 6; 
+        const static int timestampSize = 2;
+        const static int arrayLen = 4; 
         uint8_t  packetData[arrayLen];
         uint16_t timestamp;
 };
 
-SensorData::SensorData(uint16_t timestamp) : 
-    packetData{0}, timestamp(timestamp) 
+SensorData::SensorData() : 
+    packetData{0}  
 {
-    packetData[0] = (timestamp >> 0) & 0x00FF; 
-    packetData[1] = (timestamp >> 8) & 0x00FF;  
+
 }
 
 void SensorData::printDataArray() const
@@ -36,23 +36,21 @@ void SensorData::printDataArray() const
 
 void sensor_spi(void)
 {
-    digitalWrite(SS_N, LOW); 
-    static int counter = 2; 
-    static SensorData data(millis()); 
-
     uint8_t dataT = 0; 
+    int counter = 0; 
+    SensorData data{}; 
+
+    digitalWrite(SS_N, LOW); 
+
     SPI.transfer(dataT); 
 
     while(counter < data.arrayLen){
-       data.packetData[counter] = SPI.transfer(dataT);  
-       counter++; 
-       if(6 == counter) {
-            counter = 0; 
-       }
+       data.packetData[counter++] = SPI.transfer(dataT);  
     }
     // init SPI slave controller on the FPGA 
     digitalWrite(SS_N, HIGH); 
-    whylove.sendUDPPacket( data.packetData, data.arrayLen); 
+    whylove.sendUDPPacket_TimeStamp( data.packetData, data.arrayLen); 
+    LOG(logWARNING, "send UDP Sensor Data"); 
 
     //if( (dataR_f >> 12 & 0x01) == 1 ){ // if valid 
     //    // reading done, decode received data according to our protocol 
@@ -76,7 +74,7 @@ void initSensors()
 {   
     // init the FIFO Buffers
     FIFO_init(sensors.mSweepFIFO); 
-    enableLogging = false; 
+    enableLogging = true; 
 }
 
  /*  (GCLK_SOURCE / GCLK_DIVIDE) / (PRESCALER + REGISTER COUNTS) = OVERFLOW FREQUENCE OF TCX
