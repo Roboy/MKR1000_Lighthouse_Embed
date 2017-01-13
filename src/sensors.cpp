@@ -19,22 +19,23 @@ void sensor_spi(void)
     dataR_2 = SPI.transfer16(dataT);
     digitalWrite(SS_N, HIGH); 
     dataR_f = dataR_1 << 16 | dataR_2;     
-    if( (dataR_f >> 12 & 0x01) == 1 ){ // if valid 
-// reading done, decode received data according to our protocol 
-    	Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
-    	(FIFO_SIZE - 1 == sweepIndex) ? sweepIndex++ : sweepIndex = 0; 
-	rcvS->id             = dataR_f & 0x01FF; 
-	rcvS->lighthouse     = (dataR_f >> 9) & 0x01; 
-	rcvS->vertical       = (dataR_f >> 10) & 0x01; 
-	rcvS->sweepDuration  = (dataR_f >> 13) & 0x07FFFF;
+    whylove.sendUDPPacket((uint8_t *) &dataR_f, (sizeof dataR_f) * 8); 
+    //if( (dataR_f >> 12 & 0x01) == 1 ){ // if valid 
+    //    // reading done, decode received data according to our protocol 
+    //	Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
+    //	(FIFO_SIZE - 1 == sweepIndex) ? sweepIndex++ : sweepIndex = 0; 
+	//rcvS->id             = dataR_f & 0x01FF; 
+	//rcvS->lighthouse     = (dataR_f >> 9) & 0x01; 
+	//rcvS->vertical       = (dataR_f >> 10) & 0x01; 
+	//rcvS->sweepDuration  = (dataR_f >> 13) & 0x07FFFF;
 
-	FIFO128_write(sensors.mSweepFIFO, rcvS); 
-	LOG_d(logINFO, "ID: ", rcvS->id); 
-	LOG_d(logINFO, "vertical: ", rcvS->vertical); 
-	LOG_d(logINFO, "lighthouse: ", rcvS->lighthouse); 
-	LOG_d(logINFO, "sweepDuration: ", rcvS->sweepDuration); 
-	LOG(logWARNING, "******************************************");
-   }
+	//FIFO128_write(sensors.mSweepFIFO, rcvS); 
+	//LOG_d(logINFO, "ID: ", rcvS->id); 
+	//LOG_d(logINFO, "vertical: ", rcvS->vertical); 
+	//LOG_d(logINFO, "lighthouse: ", rcvS->lighthouse); 
+	//LOG_d(logINFO, "sweepDuration: ", rcvS->sweepDuration); 
+	//LOG(logWARNING, "******************************************");
+   //}
 }
 
 void initSensors()

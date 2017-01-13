@@ -22,7 +22,7 @@
 NAME=LighthouseLogging
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
-	MODULE_PATH?=$(HOME)/workspace/MKR1000_Lighthouse_Embed
+	MODULE_PATH?=$(HOME)/WS16_17/Roboy/MKR1000_Lighthouse_Embed
 	RM=rm
 	SEP=/
 	MKDIR= mkdir -p
