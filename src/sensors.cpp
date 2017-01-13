@@ -13,7 +13,7 @@ class SensorData
         SensorData(unsigned long timestamp); 
         void printDataArray() const; 
 
-        const static int arrayLen = 4; 
+        const static int arrayLen = 6; 
         uint8_t  packetData[arrayLen];
         long unsigned timestamp;
 };
@@ -21,7 +21,8 @@ class SensorData
 SensorData::SensorData(unsigned long timestamp) : 
     packetData{0}, timestamp(timestamp) 
 {
-
+    packetData[0] = timestamp >> 0; 
+    packetData[1] = timestamp >> 8; 
 }
 
 void SensorData::printDataArray() const
@@ -36,7 +37,7 @@ void SensorData::printDataArray() const
 void sensor_spi(void)
 {
     digitalWrite(SS_N, LOW); 
-    static int counter = 0; 
+    static int counter = 2; 
     static SensorData data(millis()); 
 
     uint8_t dataT = 0; 
