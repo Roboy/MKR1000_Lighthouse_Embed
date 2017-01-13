@@ -10,19 +10,19 @@ volatile static uint8_t sweepIndex = 0;
 class SensorData 
 {
     public:
-        SensorData(unsigned long timestamp); 
+        SensorData(uint16_t timestamp); 
         void printDataArray() const; 
 
         const static int arrayLen = 6; 
         uint8_t  packetData[arrayLen];
-        long unsigned timestamp;
+        uint16_t timestamp;
 };
 
-SensorData::SensorData(unsigned long timestamp) : 
+SensorData::SensorData(uint16_t timestamp) : 
     packetData{0}, timestamp(timestamp) 
 {
-    packetData[0] = timestamp >> 0; 
-    packetData[1] = timestamp >> 8; 
+    packetData[0] = (timestamp >> 0) & 0x00FF; 
+    packetData[1] = (timestamp >> 8) & 0x00FF;  
 }
 
 void SensorData::printDataArray() const
@@ -44,11 +44,15 @@ void sensor_spi(void)
     SPI.transfer(dataT); 
 
     while(counter < data.arrayLen){
-       data.packetData[counter++] = SPI.transfer(dataT);  
+       data.packetData[counter] = SPI.transfer(dataT);  
+       counter++; 
+       if(6 == counter) {
+            counter = 0; 
+       }
     }
     // init SPI slave controller on the FPGA 
     digitalWrite(SS_N, HIGH); 
-    whylove.sendUDPPacket( data.packetData, sizeof data.packetData); 
+    whylove.sendUDPPacket( data.packetData, data.arrayLen); 
 
     //if( (dataR_f >> 12 & 0x01) == 1 ){ // if valid 
     //    // reading done, decode received data according to our protocol 
