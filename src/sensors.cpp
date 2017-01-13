@@ -7,19 +7,48 @@ volatile static Sensor sensors;
 volatile static Sweep sweeps[FIFO_SIZE] = {0, 0, 0, 0}; 
 volatile static uint8_t sweepIndex = 0; 
 
+class SensorData 
+{
+    public:
+        SensorData(unsigned long timestamp); 
+        void printDataArray() const; 
+
+        const static int arrayLen = 4; 
+        uint8_t  packetData[arrayLen];
+        long unsigned timestamp;
+};
+
+SensorData::SensorData(unsigned long timestamp) : 
+    packetData{0}, timestamp(timestamp) 
+{
+
+}
+
+void SensorData::printDataArray() const
+{
+    LOG(logVERBOSE_3, "SensorData Array: "); 
+    for(int i = 0; i < arrayLen; ++i){
+        LOG_d(logVERBOSE_3, " ", packetData[i]); 
+    }
+}
+
+
 void sensor_spi(void)
 {
     digitalWrite(SS_N, LOW); 
+    static int counter = 0; 
+    static SensorData data(millis()); 
+
     uint8_t dataT = 0; 
-    uint32_t dataR_f= 0; 
-    uint16_t dataR_1 =0;
-    uint16_t dataR_2 =0;
-    uint32_t dataR = SPI.transfer(dataT);
-    dataR_1 = SPI.transfer16(dataT);
-    dataR_2 = SPI.transfer16(dataT);
+    SPI.transfer(dataT); 
+
+    while(counter < data.arrayLen){
+       data.packetData[counter++] = SPI.transfer(dataT);  
+    }
+    // init SPI slave controller on the FPGA 
     digitalWrite(SS_N, HIGH); 
-    dataR_f = dataR_1 << 16 | dataR_2;     
-    whylove.sendUDPPacket((uint8_t *) &dataR_f, (sizeof dataR_f) * 8); 
+    whylove.sendUDPPacket( data.packetData, sizeof data.packetData); 
+
     //if( (dataR_f >> 12 & 0x01) == 1 ){ // if valid 
     //    // reading done, decode received data according to our protocol 
     //	Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
