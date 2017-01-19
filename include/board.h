@@ -17,7 +17,7 @@ extern "C" {
 #define FIFO_SIZE 16
 
 typedef enum _SPI_PINS{
-    TRDY = 6,
+    TRDY = 0,
     SS_N = 7,  
 }_SPI_PINS; 
 

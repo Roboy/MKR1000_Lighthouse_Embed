@@ -13,9 +13,8 @@ class SensorData
         SensorData(); 
         void printDataArray() const; 
 
-        const static int timestampSize = 2;
-        const static int arrayLen = 4; 
-        uint8_t  packetData[arrayLen];
+        const static int arrayLen = 2; 
+        uint16_t  packetData[arrayLen];
         uint16_t timestamp;
 };
 
@@ -27,54 +26,35 @@ SensorData::SensorData() :
 
 void SensorData::printDataArray() const
 {
-    LOG(logVERBOSE_3, "SensorData Array: "); 
+    LOG(logINFO, "SensorData Array: "); 
     for(int i = 0; i < arrayLen; ++i){
-        LOG_d(logVERBOSE_3, " ", packetData[i]); 
+        LOG_d(logWARNING, " ", packetData[i]); 
     }
+    LOG(logWARNING, "SensorData Array END "); 
 }
-
 
 void sensor_spi(void)
 {
-    uint8_t dataT = 0; 
-    int counter = 0; 
-    SensorData data{}; 
+    static uint32_t prevData = 0; 
+    static uint8_t dataT = 0; 
+    static uint32_t dataR_f= 0; 
+    static uint16_t dataR_1 =0, dataR_2 = 0; 
 
     digitalWrite(SS_N, LOW); 
-
-    SPI.transfer(dataT); 
-
-    while(counter < data.arrayLen){
-       data.packetData[counter++] = SPI.transfer(dataT);  
-    }
-    // init SPI slave controller on the FPGA 
+    SPI.transfer(dataT);
+    dataR_1 = SPI.transfer16(dataT);
+    dataR_2 = SPI.transfer16(dataT);
     digitalWrite(SS_N, HIGH); 
-    whylove.sendUDPPacket_TimeStamp( data.packetData, data.arrayLen); 
-    LOG(logWARNING, "send UDP Sensor Data"); 
 
-    //if( (dataR_f >> 12 & 0x01) == 1 ){ // if valid 
-    //    // reading done, decode received data according to our protocol 
-    //	Sweep * rcvS = (Sweep*) &sweeps[sweepIndex]; 
-    //	(FIFO_SIZE - 1 == sweepIndex) ? sweepIndex++ : sweepIndex = 0; 
-	//rcvS->id             = dataR_f & 0x01FF; 
-	//rcvS->lighthouse     = (dataR_f >> 9) & 0x01; 
-	//rcvS->vertical       = (dataR_f >> 10) & 0x01; 
-	//rcvS->sweepDuration  = (dataR_f >> 13) & 0x07FFFF;
-
-	//FIFO128_write(sensors.mSweepFIFO, rcvS); 
-	//LOG_d(logINFO, "ID: ", rcvS->id); 
-	//LOG_d(logINFO, "vertical: ", rcvS->vertical); 
-	//LOG_d(logINFO, "lighthouse: ", rcvS->lighthouse); 
-	//LOG_d(logINFO, "sweepDuration: ", rcvS->sweepDuration); 
-	//LOG(logWARNING, "******************************************");
-   //}
+    dataR_f = dataR_1 << 16 | dataR_2;     
+    FIFO128_write(sensors.mSweepFIFO, dataR_f); 
 }
 
 void initSensors()
 {   
     // init the FIFO Buffers
     FIFO_init(sensors.mSweepFIFO); 
-    enableLogging = true; 
+    enableLogging = false; 
 }
 
  /*  (GCLK_SOURCE / GCLK_DIVIDE) / (PRESCALER + REGISTER COUNTS) = OVERFLOW FREQUENCE OF TCX
@@ -136,13 +116,39 @@ static void processDuration(Sweep * detectedSweep)
 
 void processSensorValues(void)
 {
+    //noInterrupts(); 
+    //Sweep * detectedSweep = FIFO128_read(sensors.mSweepFIFO); 
+    //while( NULL != detectedSweep){
+    //    processDuration(detectedSweep);
+    //    detectedSweep = FIFO128_read(sensors.mSweepFIFO); 
+    //}
+    //interrupts(); 
+
     noInterrupts(); 
-    Sweep * detectedSweep = FIFO128_read(sensors.mSweepFIFO); 
-    while( NULL != detectedSweep){
-        processDuration(detectedSweep);
-        detectedSweep = FIFO128_read(sensors.mSweepFIFO); 
-    }
+    uint32_t detectedSweep = FIFO128_read(sensors.mSweepFIFO); 
     interrupts(); 
+    while( NULL != detectedSweep){
+        if( (detectedSweep >> 12 & 0x01) == 1 ){ // if valid 
+            whylove.sendUDPPacket_TimeStamp( (uint8_t *) &detectedSweep, 4); 
+            // reading done, decode received data according to our protocol to print logging output
+            if(enableLogging){
+            int	id             = detectedSweep & 0x01FF; 
+            int lighthouse     = (detectedSweep >> 9) & 0x01; 
+            int vertical       = (detectedSweep >> 10) & 0x01; 
+            int sweepDuration  = (detectedSweep >> 13) & 0x07FFFF;
+
+            LOG_d(logINFO, "ID: ", id); 
+            LOG_d(logINFO, "vertical: ", vertical); 
+            LOG_d(logINFO, "lighthouse: ", lighthouse); 
+            LOG_d(logINFO, "sweepDuration: ", sweepDuration); 
+            LOG(logINFO, "******************************************");
+            }
+        }
+        noInterrupts(); 
+        detectedSweep = FIFO128_read(sensors.mSweepFIFO); 
+        interrupts(); 
+    }
+
 } 
 
 SENSOR_LOVE const sensorlove = { sensor_spi, initSensors, initCounter, processSensorValues}; 

@@ -28,6 +28,7 @@ static uint16_t  logginPort_t = 8001;
 
 static const char  remoteIP[] = "10.25.12.189"; 
 static const char  TestBuffer[]="Hello World"; 
+static const int    timestampSize = 2; 
 
 
 static WiFiUDP  UDP_sensors; 
@@ -144,6 +145,7 @@ static int initWifi(void)
     }
 
     LoveStatus = WL_CONNECTED;
+    enableLogging = false; 
     return (int) ES_WIFI_SUCCESS; 
 }
 
@@ -186,11 +188,11 @@ static int sendUDPPacket(const uint8_t * buffer, size_t size)
 
 static int sendUDPPacket_TimeStamp(const uint8_t * buffer, size_t size)
 {
+    LOG_d(logINFO, "Send UDP Packet with Timestamp, size: ", size+timestampSize); 
     UDP_sensors.beginPacket(remoteIP, sensorPort_t); 
-
     unsigned long t = millis(); 
     uint8_t *addr = (uint8_t*)&t;
-    for(int i =  0; i < 2; i++){
+    for(int i =  0; i < timestampSize; i++){
         UDP_sensors.write(addr[i]);
     }
 
@@ -202,7 +204,8 @@ static int sendUDPPacket_TimeStamp(const uint8_t * buffer, size_t size)
     return (int) ES_WIFI_SUCCESS; 
 }
 
-static int receiveUDPPacket(const uint8_t *buffer, size_t size){
+static int receiveUDPPacket(const uint8_t *buffer, size_t size)
+{
     uint8_t res = ES_WIFI_SUCCESS; 
     int packetSize = UDP_commands.parsePacket(); 
     if(packetSize >0){

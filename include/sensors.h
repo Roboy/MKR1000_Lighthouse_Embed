@@ -4,7 +4,7 @@
 #include "board.h"
 
 typedef struct _Sensor{
-    FIFO128sweep    mSweepFIFO; 
+    FIFO128t    mSweepFIFO; 
 }Sensor; 
 
 typedef struct _SENSOR_LOVE{

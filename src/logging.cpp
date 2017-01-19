@@ -5,7 +5,7 @@ static const char * LEVEL_STRING[] = {
 }; 
 
 static LogString * logString; 
-static TLogLevel currentLoglevel = logINFO; 
+static TLogLevel currentLoglevel = logWARNING; 
 
 static void printWiFiUDP()
 {
