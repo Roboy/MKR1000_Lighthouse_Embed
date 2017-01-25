@@ -105,6 +105,27 @@
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/MKRLib/libraries/SPI/SPI.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/wirelessLove.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/board.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFi101.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/driver/include/m2m_wifi.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_common.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/common/include/nm_debug.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_internal.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/bsp/include/nm_bsp_samd21.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/driver/include/m2m_types.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/driver/source/nmdrv.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiClient.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Client.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/IPAddress.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/IPAddress.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket_buffer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/socket/include/socket.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiSSLClient.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiServer.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Server.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/WiFi101/src/WiFiUdp.h \
+ /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/core/Udp.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/protoLighthouse.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/proto/include/pb.h \
  /home/sebtut/WS16_17/Roboy/MKR1000_Lighthouse_Embed/include/fifo.h \

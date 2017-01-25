@@ -10,7 +10,6 @@ typedef struct _Sensor{
 typedef struct _SENSOR_LOVE{
     void    (* const    sensor_spi)(void);
     void    (* const    initSensors)(void); 
-    void    (* const    initCounter)(void);
     void    (* const    processSensorValues)(void); 
 }SENSOR_LOVE;
 

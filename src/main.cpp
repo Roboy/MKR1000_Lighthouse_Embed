@@ -10,8 +10,22 @@ void initVariant() { }
 // Initialize C library
 extern "C" void __libc_init_array(void);
 
-static void initPeripherals()
+static void 
+checkHostConfig()
 {
+    while(false == whylove.fmsgConfig_r())
+    {
+        protoLove.encode_trackedObjConfig(
+                whylove.getLocalIP(),
+                whylove.getCmndPort()); 
+        delay(100); 
+    }    
+}
+
+static void 
+initPeripherals()
+{
+    delay(1000); 
     /************** WIFI *****************************/
     if(ES_WIFI_SUCCESS != whylove.initWifi()){
         Serial.println("Error in initializing the WiFi!"); 
@@ -32,16 +46,15 @@ static void initPeripherals()
     /************** SPI ****************************/
     pinMode(TRDY    ,INPUT); 
     pinMode(SS_N    ,OUTPUT); 
-
     SPI.begin();
     SPI.setBitOrder(MSBFIRST);  
 
     /************* SENSORS **************************/
-    sensorlove.initCounter(); 
     sensorlove.initSensors();   
 }
 
-static void initPins_Interrupts(void)
+static void 
+initPins_Interrupts(void)
 {
     attachInterrupt(TRDY, sensorlove.sensor_spi, HIGH); 
 }
@@ -69,9 +82,9 @@ int main( void )
     
     for (;;)
     {
+        checkHostConfig(); 
         //whylove.printWifiStatus(); 
         sensorlove.processSensorValues(); 
-        //digitalWrite(SS_N, HIGH); 
     }
     return 0;
 }
